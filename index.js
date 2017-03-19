@@ -3,7 +3,6 @@ var Console = require("console");
 
 //external library imorts
 var Discord = require("discord.io");
-var JsonFile = require("jsonfile");
 
 //my imports
 var Token = require("./token.json");

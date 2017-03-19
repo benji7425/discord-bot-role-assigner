@@ -35,12 +35,6 @@
           }
         }
       }
-    },
-    "jsonfile": {
-      "version": "2.4.0",
-      "from": "jsonfile@latest",
-      "resolved": "./node_shrinkwrap/jsonfile-2.4.0.tar",
-      "dependencies": {}
     }
   }
 }

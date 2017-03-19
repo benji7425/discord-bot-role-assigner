@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/benji7425/discord-role-bot#readme",
   "dependencies": {
-    "discord.io": "^2.5.1",
-    "jsonfile": "^2.4.0"
+    "discord.io": "^2.5.1"
   }
 }
