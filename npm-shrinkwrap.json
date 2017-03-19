@@ -1,4 +1,46 @@
 {
-  "name": "node-boilerplate",
-  "version": "1.0.0"
+  "name": "discord-role-bot",
+  "version": "1.0.0",
+  "dependencies": {
+    "discord.io": {
+      "version": "2.5.1",
+      "from": "discord.io@latest",
+      "resolved": "./node_shrinkwrap/discord.io-2.5.1.tar",
+      "dependencies": {
+        "cjopus": {
+          "version": "0.0.4",
+          "from": "cjopus@>=0.0.4 <0.0.5",
+          "resolved": "./node_shrinkwrap/cjopus-0.0.4.tar"
+        },
+        "tweetnacl": {
+          "version": "0.14.5",
+          "from": "tweetnacl@>=0.14.0 <0.15.0",
+          "resolved": "./node_shrinkwrap/tweetnacl-0.14.5.tar"
+        },
+        "ws": {
+          "version": "1.1.4",
+          "from": "ws@>=1.1.0 <2.0.0",
+          "resolved": "./node_shrinkwrap/ws-1.1.4.tar",
+          "dependencies": {
+            "options": {
+              "version": "0.0.6",
+              "from": "options@>=0.0.5",
+              "resolved": "./node_shrinkwrap/options-0.0.6.tar"
+            },
+            "ultron": {
+              "version": "1.0.2",
+              "from": "ultron@>=1.0.0 <1.1.0",
+              "resolved": "./node_shrinkwrap/ultron-1.0.2.tar"
+            }
+          }
+        }
+      }
+    },
+    "jsonfile": {
+      "version": "2.4.0",
+      "from": "jsonfile@latest",
+      "resolved": "./node_shrinkwrap/jsonfile-2.4.0.tar",
+      "dependencies": {}
+    }
+  }
 }
