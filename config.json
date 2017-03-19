@@ -1,0 +1,7 @@
+{
+	"roleAddCommand": "!addrole",
+	"roleRemoveCommand": "!removerole",
+	"availableRoles": [
+		{ "name": "example", "id": "272788856447959040" }
+	]
+}

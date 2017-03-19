@@ -53,3 +53,4 @@ jspm_packages
 # End of https://www.gitignore.io/api/node
 
 # Project-specific cache for use with shrinkpack - https://github.com/JamieMason/shrinkpack
+token\.json

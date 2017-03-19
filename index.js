@@ -6,7 +6,8 @@ var Discord = require("discord.io");
 var JsonFile = require("jsonfile");
 
 //my imports
-var Token = require(".token/json");
+var Token = require("./token.json");
+var Config = require("./config.json");
 
 var DiscordClient = {
 	bot: null,
@@ -27,11 +28,30 @@ var DiscordClient = {
 		Console.info("Registered bot " + DiscordClient.bot.username + " with id " + DiscordClient.bot.id);
 	},
 	onMessage: (user, userID, channelID, message) => {
-		if (userID !== DiscordClient.bot.id)
-			DiscordClient.bot.sendMessage({
-				to: channelID,
-				message: "Message received from userID " + userID
+		if (message.startsWith(Config.roleAddCommand)) {
+			let roleName = message.split(" ")[1];
+			Config.availableRoles.forEach((role) => {
+				if (role.name === roleName) {
+					DiscordClient.bot.addToRole({
+						serverID: DiscordClient.bot.channels[channelID].guild_id,
+						userID: userID,
+						roleID: role.id
+					}), (err, response) => { Console.error(err + " " + response); };
+				}
 			});
+		}
+		else if (message.startsWith(Config.roleRemoveCommand)) {
+			let roleName = message.split(" ")[1];
+			Config.availableRoles.forEach((role) => {
+				if (role.name === roleName) {
+					DiscordClient.bot.removeFromRole({
+						serverID: DiscordClient.bot.channels[channelID].guild_id,
+						userID: userID,
+						roleID: role.id
+					}), (err, response) => { Console.error(err + " " + response); };
+				}
+			});
+		}
 	}
 };
 
