@@ -16,5 +16,7 @@
     "url": "https://github.com/benji7425/discord-role-bot/issues"
   },
   "homepage": "https://github.com/benji7425/discord-role-bot#readme",
-  "dependencies": {}
+  "dependencies": {
+    "discord.io": "2.5.1"
+  }
 }
