@@ -1,0 +1,23 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "The purpose of this is to act as a shell for other bot modules, so that a single bot user account can be used for a multi-function bot.",
+  "main": "index.js",
+  "dependencies": {
+    "discord.io": "2.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benji7425/discord-bot-wrapper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benji7425/discord-bot-wrapper/issues"
+  },
+  "homepage": "https://github.com/benji7425/discord-bot-wrapper#readme"
+}

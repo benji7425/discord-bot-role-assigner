@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:benji7425/discord-bot-wrapper.git
+	branch = master
+	commit = 0cf920f3a659f11d388a62b248073c08bf89949b
+	parent = d6aa427251795af2f1598757934d875cdf42ea7a
+	cmdver = 0.3.1
