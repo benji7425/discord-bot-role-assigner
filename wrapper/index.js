@@ -4,7 +4,7 @@ const Console = require("console");
 //external module imports
 var Discord = require("discord.io");
 
-var BotModules = [require("../app/index.js")];
+var BotModules = [require("../app/index.js")()];
 
 var bot;
 

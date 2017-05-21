@@ -1,11 +1,12 @@
-const Config = require("./config.json");
 const Console = require("console");
 
-module.exports = {
-	onMessage: (bot, user, userID, channelID, message) => {
-		if (message.startsWith(Config.roleAddCommand)) {
+module.exports = (config) => {
+	config = config || require("./config.json");
+
+	this.onMessage = (bot, user, userID, channelID, message) => {
+		if (message.startsWith(config.roleAddCommand)) {
 			let roleName = message.split(" ")[1];
-			Config.availableRoles.forEach((role) => {
+			config.availableRoles.forEach((role) => {
 				if (role.name === roleName) {
 					bot.addToRole({
 						serverID: bot.channels[channelID].guild_id,
@@ -15,9 +16,9 @@ module.exports = {
 				}
 			});
 		}
-		else if (message.startsWith(Config.roleRemoveCommand)) {
+		else if (message.startsWith(config.roleRemoveCommand)) {
 			let roleName = message.split(" ")[1];
-			Config.availableRoles.forEach((role) => {
+			config.availableRoles.forEach((role) => {
 				if (role.name === roleName) {
 					bot.removeFromRole({
 						serverID: bot.channels[channelID].guild_id,
@@ -27,5 +28,7 @@ module.exports = {
 				}
 			});
 		}
-	}
+	};
+
+	return this;
 };
