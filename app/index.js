@@ -35,6 +35,16 @@ module.exports = (config) => {
 					}
 				});
 			}
+		},
+		{
+			command: config.roleListCommand,
+			type: "equals",
+			action: (bot, user, userID, channelID, message) => {
+				bot.sendMessage({
+					to: channelID,
+					message: "Available roles: \n" + config.availableRoles.map((x) => x.name).join(", \n")
+				});
+			}
 		}
 	];
 
