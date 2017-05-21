@@ -9,15 +9,16 @@ module.exports = (config) => {
 			type: "startsWith",
 			action: (bot, user, userID, channelID, message) => {
 				let roleName = message.split(" ")[1];
-				config.availableRoles.forEach((role) => {
-					if (role.name === roleName) {
-						bot.addToRole({
-							serverID: bot.channels[channelID].guild_id,
-							userID: userID,
-							roleID: role.id
-						}), (err, response) => { Console.error(err + " " + response); };
-					}
-				});
+				let roleID = getRoleIDFromName(roleName, config.availableRoles);
+
+				if (roleID !== null && roleID !== undefined)
+					bot.addToRole({
+						serverID: bot.channels[channelID].guild_id,
+						userID: userID,
+						roleID: roleID
+					}, (err, response) => { Console.error(err + " " + response); });
+				else
+					Console.error(user + " tried to remove role '" + roleName + "' but this role does not exist!");
 			}
 		},
 		{
@@ -25,15 +26,16 @@ module.exports = (config) => {
 			type: "startsWith",
 			action: (bot, user, userID, channelID, message) => {
 				let roleName = message.split(" ")[1];
-				config.availableRoles.forEach((role) => {
-					if (role.name === roleName) {
-						bot.removeFromRole({
-							serverID: bot.channels[channelID].guild_id,
-							userID: userID,
-							roleID: role.id
-						}), (err, response) => { Console.error(err + " " + response); };
-					}
-				});
+				let roleID = getRoleIDFromName(roleName, config.availableRoles);
+
+				if (roleID !== null && roleID !== undefined)
+					bot.removeFromRole({
+						serverID: bot.channels[channelID].guild_id,
+						userID: userID,
+						roleID: roleID
+					}, (err, response) => { Console.error(err + " " + response); });
+				else
+					Console.error(user + " tried to remove role '" + roleName + "' but this role does not exist!");
 			}
 		},
 		{
@@ -49,4 +51,19 @@ module.exports = (config) => {
 	];
 
 	return this;
+};
+
+var getRoleIDFromName = (roleName, availableRoles) => {
+	var returnID = null;
+
+	var normaliseRoleName = (roleName) => {
+		return roleName.replace(" ", "").toLowerCase();
+	};
+
+	availableRoles.forEach((role) => {
+		if (normaliseRoleName(role.name) === normaliseRoleName(roleName))
+			returnID = role.id;
+	});
+
+	return returnID;
 };
