@@ -1,5 +1,5 @@
 {
-  "name": "discord-role-bot-module",
+  "name": "discord-bot-role-assigner",
   "version": "1.0.0",
   "description": "",
   "main": "app/index.js",
