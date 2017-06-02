@@ -11,12 +11,28 @@ module.exports = (config) => {
 				let roleName = message.split(" ")[1];
 				let roleID = getRoleIDFromName(roleName, config.availableRoles);
 
-				if (roleID !== null && roleID !== undefined)
-					bot.addToRole({
+				if (roleID !== null && roleID !== undefined) //make sure the role exists
+					bot.addToRole({ //add the user to the role
 						serverID: bot.channels[channelID].guild_id,
 						userID: userID,
 						roleID: roleID
-					}, (err, response) => { Console.error(err + " " + response); });
+					}, (err, response) => {
+						if (err)
+							Console.error(err); //log the error if there is one
+						else
+							bot.sendMessage({ //else response with a confirmation message
+								to: channelID,
+								message: config.confirmation.roleAddMessage.replace(config.confirmation.roleNameIdentifier, roleName) //construct the response message based on the configuration
+							}, (err, response) => {
+								if (err)
+									Console.error(err); //log the error sending the response message if there is one
+								else
+									setTimeout(() => bot.deleteMessage({ //else delete it after a time period
+										channelID: channelID,
+										messageID: response.id
+									}), config.confirmation.messageDeleteTime);
+							});
+					});
 				else
 					Console.error(user + " tried to remove role '" + roleName + "' but this role does not exist!");
 			}
@@ -28,12 +44,28 @@ module.exports = (config) => {
 				let roleName = message.split(" ")[1];
 				let roleID = getRoleIDFromName(roleName, config.availableRoles);
 
-				if (roleID !== null && roleID !== undefined)
-					bot.removeFromRole({
+				if (roleID !== null && roleID !== undefined) //make sure the role exists
+					bot.removeFromRole({ //remove the user from the role
 						serverID: bot.channels[channelID].guild_id,
 						userID: userID,
 						roleID: roleID
-					}, (err, response) => { Console.error(err + " " + response); });
+					}, (err, response) => {
+						if (err)
+							Console.error(err);
+						else
+							bot.sendMessage({ //else respond with a confirmation message
+								to: channelID,
+								message: config.confirmation.roleRemoveMessage.replace(config.confirmation.roleNameIdentifier, roleName) //construct the response message based on the configuration
+							}, (err, response) => {
+								if (err)
+									Console.error(err); //log the error sending the response message if there is one
+								else
+									setTimeout(() => bot.deleteMessage({ //else delete it after a time period
+										channelID: channelID,
+										messageID: response.id
+									}), config.confirmation.messageDeleteTime);
+							});
+					});
 				else
 					Console.error(user + " tried to remove role '" + roleName + "' but this role does not exist!");
 			}

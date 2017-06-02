@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Confirmation message when a role is added/removed
+	- Fully configurable in config file
+	- Deletes the confirmation message after a configurable length of time
+
 ## v1.0.0
 
 ### Features
