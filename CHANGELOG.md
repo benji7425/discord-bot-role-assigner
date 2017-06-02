@@ -1,11 +1,5 @@
 # Changelog
 
-## v1.2.0
-
-### Added
-
-- Command aliases for role addition and removal
-
 ## v1.1.0
 
 ### Added
@@ -13,6 +7,7 @@
 - Confirmation message when a role is added/removed
 	- Fully configurable in config file
 	- Deletes the confirmation message after a configurable length of time
+- Command aliases for role addition and removal
 
 ## v1.0.0
 
