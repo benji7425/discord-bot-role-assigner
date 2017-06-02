@@ -5,6 +5,12 @@
 	"availableRoles": [
 		{ "name": "example", "id": "272788856447959040" }
 	],
+	"confirmation": {
+		"roleAddMessage": "You have successfully been added to the role {role}",
+		"roleRemoveMessage": "You have successfully been removed from the role {role}",
+		"roleNameIdentifier": "{role}",
+		"messageDeleteTime": 5000
+	},
 	"confirmationMessage": "You have successfully been added to the role {role}",
 	"confirmationMessageRoleIdentifier": "{role}",
 	"confirmationMessageDeleteTime": 5000
