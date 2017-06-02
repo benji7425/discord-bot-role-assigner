@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.0
+
+### Added
+
+- Command aliases for role addition and removal
+
 ## v1.1.0
 
 ### Added
