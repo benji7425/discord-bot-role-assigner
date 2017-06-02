@@ -3,7 +3,7 @@
 	"roleRemoveCommand": "!removerole",
 	"roleListCommand": "!roles",
 	"availableRoles": [
-		{ "name": "example", "id": "272788856447959040" }
+		{ "name": "example", "id": "272788856447959040", "roleAddAlias": "!exemplify", "roleRemoveAlias": "!unexemplify" }
 	],
 	"confirmation": {
 		"roleAddMessage": "You have successfully been added to the role {role}",

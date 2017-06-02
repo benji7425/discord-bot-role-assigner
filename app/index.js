@@ -38,6 +38,18 @@ module.exports = (_config) => {
 		}
 	];
 
+	//check if we have any roles with specific command aliases
+	if (config.availableRoles.some((role) => { return role.roleAddAlias !== undefined && role.roleRemoveAlias !== undefined; }))
+		//add an onMessage handler to check for the command aliases
+		this.onMessage = (bot, user, userID, channelID, message) => {
+			config.availableRoles.forEach((role) => {
+				if (message === role.roleAddAlias)
+					addRole(bot, user, userID, channelID, role.id, role.name);
+				else if (message === role.roleRemoveAlias)
+					removeRole(bot, user, userID, channelID, role.id, role.name);
+			});
+		};
+
 	return this;
 };
 
