@@ -4,5 +4,8 @@
 	"roleListCommand": "!roles",
 	"availableRoles": [
 		{ "name": "example", "id": "272788856447959040" }
-	]
+	],
+	"confirmationMessage": "You have successfully been added to the role {role}",
+	"confirmationMessageRoleIdentifier": "{role}",
+	"confirmationMessageDeleteTime": 5000
 }
