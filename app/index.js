@@ -10,7 +10,11 @@ module.exports = (_config) => {
 			command: config.roleAddCommand,
 			type: "startsWith",
 			action: (bot, user, userID, channelID, message) => {
-				let roleName = message.split(" ")[1];
+				let parameters = message.split(" ");
+
+				if (parameters.length < 2) return; //make sure we don't crash if someone just types the role add command without anything afterwards
+
+				let roleName = parameters[1];
 				let roleID = getRoleIDFromName(roleName, config.availableRoles);
 
 				addRole(bot, user, userID, channelID, roleID, roleName);
@@ -20,7 +24,11 @@ module.exports = (_config) => {
 			command: config.roleRemoveCommand,
 			type: "startsWith",
 			action: (bot, user, userID, channelID, message) => {
-				let roleName = message.split(" ")[1];
+				let parameters = message.split(" ");
+
+				if(parameters.length < 2) return; //make sure we don't crash if someone just types the command with nothing following it
+
+				let roleName = parameters[1];
 				let roleID = getRoleIDFromName(roleName, config.availableRoles);
 
 				removeRole(bot, user, userID, channelID, roleID, roleName);
