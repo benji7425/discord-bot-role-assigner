@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.1
+
+### Fixed
+
+- Crash when someone uses the role add and leave commands without specifying a role name
+
 ## v1.1.0
 
 ### Added
