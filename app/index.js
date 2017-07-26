@@ -24,54 +24,72 @@ module.exports = (client) => {
 
 			switch (params[1].toLowerCase()) {
 				case config.allowCommand:
-					RolePerms.allow(message.guild, data, message.mentions.roles.first());
+					RolePerms.allow(message.guild, data, message.mentions.roles.first()).then(response => {
+						writeFile(data);
+						message.reply(response);
+					}).catch(message.reply);
 					break;
 				case config.disallowCommand:
-					RolePerms.disallow(message.guild, data, message.mentions.roles.first());
+					RolePerms.disallow(message.guild, data, message.mentions.roles.first()).then(response => {
+						writeFile(data);
+						message.reply(response);
+					}).catch(message.reply);
 					break;
 			}
 		}
 		else if (message.content.startsWith(config.joinCommand)) //user is trying to join a role
-			RoleManagement.join(message.guild, message.member, data, message.content.split(" ")[1]);
+			RoleManagement.join(message.guild, message.member, data, message.content.split(" ")[1]).then(response => message.reply(response)).catch(response => message.reply(response));
 		else if (message.content.startsWith(config.leaveCommand)) //user is trying to leave a role
-			RoleManagement.leave(message.guild, message.member, data, message.content.split(" ")[1]);
+			RoleManagement.leave(message.guild, message.member, data, message.content.split(" ")[1]).then(response => message.reply(response)).catch(response => message.reply(response));
 	});
 };
 
 const RoleManagement = {
 	join: (guild, member, data, roleName) => {
-		const role = parseRole(guild, roleName);
-		if (role && data[guild.id].includes(role.id))
-			member.addRole(role);
+		return new Promise((resolve, reject) => {
+			const role = parseRole(guild, roleName);
+			if (role && data[guild.id].includes(role.id))
+				member.addRole(role).then(() => resolve("The role has been added")).catch(reject);
+			else
+				reject("Role not found or not allowed");
+		});
 	},
 	leave: (guild, member, data, roleName) => {
-		const role = parseRole(guild, roleName);
-		if (role && data[guild.id].includes(role.id))
-			member.removeRole(role);
+		return new Promise((resolve, reject) => {
+			const role = parseRole(guild, roleName);
+			if (role && data[guild.id].includes(role.id))
+				member.removeRole(role).then(() => resolve("The role has been removed")).catch(reject);
+			else
+				reject("Role not found or not allowed");
+		});
 	}
 };
 
 const RolePerms = {
 	allow: (guild, data, role) => {
-		if (!role)
-			return;
+		return new Promise((resolve, reject) => {
+			if (!role)
+				reject("Role not found");
 
-		if (!data[guild.id]) //ensure we have an array of roles for this guild
-			data[guild.id] = [];
+			if (!data[guild.id]) //ensure we have an array of roles for this guild
+				data[guild.id] = [];
 
-		data[guild.id].push(role.id); //add this as an allowed role
+			data[guild.id].push(role.id); //add this as an allowed role
 
-		writeFile(data);
+			resolve("Role is now allowed");
+		});
 	},
 	disallow: (guild, data, role) => {
-		if (!role)
-			return;
+		return new Promise((resolve, reject) => {
+			if (!role)
+				reject("Role not found");
 
-		if (!data[guild.id]) //ensure we have an array of roles for this guild
-			data[guild.id] = [];
-		data[guild.id].splice(data[guild.id].indexOf(role.id), 1); //remove this as an allowed role
+			if (!data[guild.id]) //ensure we have an array of roles for this guild
+				data[guild.id] = [];
+			data[guild.id].splice(data[guild.id].indexOf(role.id), 1); //remove this as an allowed role
 
-		writeFile(data);
+			resolve("Role is now disallowed");
+		});
 	}
 };
 

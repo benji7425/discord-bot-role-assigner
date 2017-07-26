@@ -5,9 +5,10 @@ Discord bot for allowing users to join and leave configured roles
 ## Setup
 
 1. Clone somewhere
-2. `npm install`
-3. Add a file called *token.json* with your token: `{ "token": "your-token-goes-here" }`
-4. `npm start`
+2. Make sure you have *git* installed, as this is needed for some modules
+3. `npm install`
+4. Add a file called *token.json* with your token: `{ "token": "your-token-goes-here" }`
+5. `npm start`
 
 ## Configuration
 

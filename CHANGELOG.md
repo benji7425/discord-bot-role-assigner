@@ -10,6 +10,7 @@
 ### Added
 
 - Multi-guild support
+- Response messages in chat upon role joining/leaving
 
 ## v1.1.1
 
