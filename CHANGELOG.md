@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.0.0
+
+### Updated
+
+- Now uses discord.js rather than discord.io
+- Setup is now done via in-chat commands, rather than config file editing
+
+### Added
+
+- Multi-guild support
+
 ## v1.1.1
 
 ### Fixed

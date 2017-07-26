@@ -1,20 +1,26 @@
-# discord-role-bot
+# Discord role bot
 
-Very simple bot for adding and removing roles upon user request  
-Uses [discord.io](https://github.com/izy521/discord.io)
+Discord bot for allowing users to join and leave configured roles
 
 ## Setup
-1. Download the latest release from the [releases page](https://github.com/benji7425/discord-role-bot/releases)
-2. Unzip the file somewhere
-3. Create *token.json* inside the *wrapper* folder; make it looks like this: `{ "token": "1234567890" }`
-4. Set up the roles in *app/config.json* (there is an example to help)
-    1. Put a comma at the end of the previous one
-    2. New line
-    3. In a discord chat, type `\@role` to get the role ID (make sure the role is mentionable)
-    4. Add the role, looking like this: `{ "name": "myrole", "id": "1234567890" }`
-5. Run `npm start`
- 
-## Troubleshooting
 
-- Make sure the bot has role management permissions
-- Make sure each role in *config.json* has a comma on the end, *except for the last one*
+1. Clone somewhere
+2. `npm install`
+3. Add a file called *token.json* with your token: `{ "token": "your-token-goes-here" }`
+4. `npm start`
+
+## Configuration
+
+### Admin commands
+These require administrator permission in the guild
+- `@bot allow @role` to allow users to join/leave the role
+- `@bot disallow @role` to disallow users to join/leave the role
+
+### User commands
+These can be run by any user in the guild
+- `!joinrole role-name` to join a role
+- `!leaverole role-name` to leave a role
+
+## Need help?
+
+Join my [support Discord server](https://discordapp.com/invite/SSkbwSJ)
