@@ -12,6 +12,7 @@ const SAVE_FILE = "./guilds.json";
 
 //when loaded with require() by an external script, this acts as a kind of "on ready" function
 module.exports = (client) => {
+	const config = require("./config.json");
 	const data = FileSystem.existsSync(SAVE_FILE) ? JsonFile.readFileSync(SAVE_FILE) : {};
 
 	client.on("message", (message) => {
@@ -20,18 +21,19 @@ module.exports = (client) => {
 			&& message.member.id !== client.user.id) //isn't the bot accidentally triggering itself
 		{
 			const params = message.content.split(" "); //[ client.user.id, command, args ] expected
+
 			switch (params[1].toLowerCase()) {
-				case "allow":
+				case config.allowCommand:
 					RolePerms.allow(message.guild, data, message.mentions.roles.first());
 					break;
-				case "disallow":
+				case config.disallowCommand:
 					RolePerms.disallow(message.guild, data, message.mentions.roles.first());
 					break;
 			}
 		}
-		else if (message.content.startsWith("!joinrole")) //user is trying to join a role
+		else if (message.content.startsWith(config.joinCommand)) //user is trying to join a role
 			RoleManagement.join(message.guild, message.member, data, message.content.split(" ")[1]);
-		else if (message.content.startsWith("!leaverole")) //user is trying to leave a role
+		else if (message.content.startsWith(config.leaveCommand)) //user is trying to leave a role
 			RoleManagement.leave(message.guild, message.member, data, message.content.split(" ")[1]);
 	});
 };

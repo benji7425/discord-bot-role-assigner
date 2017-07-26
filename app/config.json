@@ -1,0 +1,6 @@
+{
+	"allowCommand": "allow",
+	"disallowCommand": "disallow",
+	"joinCommand": "!joinrole",
+	"leaveCommand": "!leaverole"
+}
