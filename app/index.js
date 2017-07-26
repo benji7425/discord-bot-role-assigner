@@ -1,131 +1,84 @@
-const Console = require("console");
+//node imports
+const FileSystem = require("fs");
 
-var config;
+//external lib imports
+const JsonFile = require("jsonfile");
 
-module.exports = (_config) => {
-	config = _config || require("./config.json");
+//my imports
+const Util = require("discordjs-util");
 
-	this.commands = [
+//global vars
+const SAVE_FILE = "./guilds.json";
+
+//when loaded with require() by an external script, this acts as a kind of "on ready" function
+module.exports = (client) => {
+	const config = require("./config.json");
+	const data = FileSystem.existsSync(SAVE_FILE) ? JsonFile.readFileSync(SAVE_FILE) : {};
+
+	client.on("message", (message) => {
+		if (message.content.startsWith(client.user.toString()) //user is @mention-ing the bot
+			&& message.member.permissions.has("ADMINISTRATOR") //user has admin perms
+			&& message.member.id !== client.user.id) //isn't the bot accidentally triggering itself
 		{
-			command: config.roleAddCommand,
-			type: "startsWith",
-			action: (bot, user, userID, channelID, message) => {
-				let parameters = message.split(" ");
+			const params = message.content.split(" "); //[ client.user.id, command, args ] expected
 
-				if (parameters.length < 2) return; //make sure we don't crash if someone just types the role add command without anything afterwards
-
-				let roleName = parameters[1];
-				let roleID = getRoleIDFromName(roleName, config.availableRoles);
-
-				addRole(bot, user, userID, channelID, roleID, roleName);
-			}
-		},
-		{
-			command: config.roleRemoveCommand,
-			type: "startsWith",
-			action: (bot, user, userID, channelID, message) => {
-				let parameters = message.split(" ");
-
-				if(parameters.length < 2) return; //make sure we don't crash if someone just types the command with nothing following it
-
-				let roleName = parameters[1];
-				let roleID = getRoleIDFromName(roleName, config.availableRoles);
-
-				removeRole(bot, user, userID, channelID, roleID, roleName);
-			}
-		},
-		{
-			command: config.roleListCommand,
-			type: "equals",
-			action: (bot, user, userID, channelID, message) => {
-				bot.sendMessage({
-					to: channelID,
-					message: "Available roles: \n" + config.availableRoles.map((x) => x.name).join(", \n")
-				});
+			switch (params[1].toLowerCase()) {
+				case config.allowCommand:
+					RolePerms.allow(message.guild, data, message.mentions.roles.first());
+					break;
+				case config.disallowCommand:
+					RolePerms.disallow(message.guild, data, message.mentions.roles.first());
+					break;
 			}
 		}
-	];
-
-	//check if we have any roles with specific command aliases
-	if (config.availableRoles.some((role) => { return role.roleAddAlias !== undefined && role.roleRemoveAlias !== undefined; }))
-		//add an onMessage handler to check for the command aliases
-		this.onMessage = (bot, user, userID, channelID, message) => {
-			config.availableRoles.forEach((role) => {
-				if (message === role.roleAddAlias)
-					addRole(bot, user, userID, channelID, role.id, role.name);
-				else if (message === role.roleRemoveAlias)
-					removeRole(bot, user, userID, channelID, role.id, role.name);
-			});
-		};
-
-	return this;
-};
-
-var addRole = (bot, user, userID, channelID, roleID, roleName) => {
-	if (roleID !== null && roleID !== undefined) //make sure the role exists
-		bot.addToRole({ //add the user to the role
-			serverID: bot.channels[channelID].guild_id,
-			userID: userID,
-			roleID: roleID
-		}, (err, response) => {
-			if (err)
-				Console.error(err); //log the error if there is one
-			else
-				bot.sendMessage({ //else response with a confirmation message
-					to: channelID,
-					message: config.confirmation.roleAddMessage.replace(config.confirmation.roleNameIdentifier, roleName) //construct the response message based on the configuration
-				}, (err, response) => {
-					if (err)
-						Console.error(err); //log the error sending the response message if there is one
-					else
-						setTimeout(() => bot.deleteMessage({ //else delete it after a time period
-							channelID: channelID,
-							messageID: response.id
-						}), config.confirmation.messageDeleteTime);
-				});
-		});
-	else
-		Console.error(user + " tried to remove role '" + roleName + "' but this role does not exist!");
-};
-
-var removeRole = (bot, user, userID, channelID, roleID, roleName) => {
-	if (roleID !== null && roleID !== undefined) //make sure the role exists
-		bot.removeFromRole({ //remove the user from the role
-			serverID: bot.channels[channelID].guild_id,
-			userID: userID,
-			roleID: roleID
-		}, (err, response) => {
-			if (err)
-				Console.error(err);
-			else
-				bot.sendMessage({ //else respond with a confirmation message
-					to: channelID,
-					message: config.confirmation.roleRemoveMessage.replace(config.confirmation.roleNameIdentifier, roleName) //construct the response message based on the configuration
-				}, (err, response) => {
-					if (err)
-						Console.error(err); //log the error sending the response message if there is one
-					else
-						setTimeout(() => bot.deleteMessage({ //else delete it after a time period
-							channelID: channelID,
-							messageID: response.id
-						}), config.confirmation.messageDeleteTime);
-				});
-		});
-	else
-		Console.error(user + " tried to remove role '" + roleName + "' but this role does not exist!");
-};
-
-var getRoleIDFromName = (roleName, availableRoles) => {
-	var returnID = null;
-
-	var normaliseRoleName = (roleName) => {
-		return roleName.replace(" ", "").toLowerCase();
-	};
-
-	availableRoles.forEach((role) => {
-		if (normaliseRoleName(role.name) === normaliseRoleName(roleName))
-			returnID = role.id;
+		else if (message.content.startsWith(config.joinCommand)) //user is trying to join a role
+			RoleManagement.join(message.guild, message.member, data, message.content.split(" ")[1]);
+		else if (message.content.startsWith(config.leaveCommand)) //user is trying to leave a role
+			RoleManagement.leave(message.guild, message.member, data, message.content.split(" ")[1]);
 	});
-
-	return returnID;
 };
+
+const RoleManagement = {
+	join: (guild, member, data, roleName) => {
+		const role = parseRole(guild, roleName);
+		if (role && data[guild.id].includes(role.id))
+			member.addRole(role);
+	},
+	leave: (guild, member, data, roleName) => {
+		const role = parseRole(guild, roleName);
+		if (role && data[guild.id].includes(role.id))
+			member.removeRole(role);
+	}
+};
+
+const RolePerms = {
+	allow: (guild, data, role) => {
+		if (!role)
+			return;
+
+		if (!data[guild.id]) //ensure we have an array of roles for this guild
+			data[guild.id] = [];
+
+		data[guild.id].push(role.id); //add this as an allowed role
+
+		writeFile(data);
+	},
+	disallow: (guild, data, role) => {
+		if (!role)
+			return;
+
+		if (!data[guild.id]) //ensure we have an array of roles for this guild
+			data[guild.id] = [];
+		data[guild.id].splice(data[guild.id].indexOf(role.id), 1); //remove this as an allowed role
+
+		writeFile(data);
+	}
+};
+
+function parseRole(guild, roleName) {
+	return guild.roles.find(x => x.name.toLowerCase() === roleName.toLowerCase()) || null;
+}
+
+function writeFile(data) {
+	JsonFile.writeFile(SAVE_FILE, data, err => { if (err) Util.dateError(err); });
+}

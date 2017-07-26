@@ -1,8 +1,8 @@
-# Added myself
+# Project specific
 
-node_cache
-
-# Created by https://www.gitignore.io/api/node
+guilds.json
+token.json
+log
 
 ### Node ###
 # Logs
@@ -36,6 +36,7 @@ build/Release
 
 # Dependency directories
 node_modules
+node_cache
 jspm_packages
 
 # Optional npm cache directory
@@ -55,6 +56,3 @@ jspm_packages
 
 
 # End of https://www.gitignore.io/api/node
-
-# Project-specific cache for use with shrinkpack - https://github.com/JamieMason/shrinkpack
-token\.json

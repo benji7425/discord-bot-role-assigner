@@ -9,7 +9,7 @@
 			"type": "node",
 			"request": "launch",
 			"name": "Launch Program",
-			"program": "${workspaceRoot}\\wrapper\\index.js"
+			"program": "${workspaceRoot}/wrapper.js"
 		}
 	]
 }
