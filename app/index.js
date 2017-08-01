@@ -98,7 +98,7 @@ function parseRole(guild, roleName) {
 }
 
 function normaliseRoleName(roleName){
-	return roleName.toLowerCase().replace(" ", "");
+	return roleName.toLowerCase().replace(/ /g, "");
 }
 
 function writeFile(data) {
