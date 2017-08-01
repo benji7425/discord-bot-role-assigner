@@ -1,11 +1,12 @@
 # Changelog
 
-## v2.0.0
+## Unreleased
 
 ### Updated
 
 - Now uses discord.js rather than discord.io
 - Setup is now done via in-chat commands, rather than config file editing
+- Updated admin allow/disallow commands to not require the role to be @mentioned
 
 ### Added
 

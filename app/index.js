@@ -24,13 +24,13 @@ module.exports = (client) => {
 
 			switch (params[1].toLowerCase()) {
 				case config.allowCommand:
-					RolePerms.allow(message.guild, data, message.mentions.roles.first()).then(response => {
+					RolePerms.allow(message.guild, data, message.guild.roles.find(x => x.name === params[2])).then(response => {
 						writeFile(data);
 						message.reply(response);
 					}).catch(message.reply);
 					break;
 				case config.disallowCommand:
-					RolePerms.disallow(message.guild, data, message.mentions.roles.first()).then(response => {
+					RolePerms.disallow(message.guild, data, message.guild.roles.find(x => x.name === params[2])).then(response => {
 						writeFile(data);
 						message.reply(response);
 					}).catch(message.reply);
