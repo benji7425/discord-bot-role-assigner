@@ -5,17 +5,13 @@
 ### Added
 
 - Support for roles with spaces and/or caps
+- Multi-guild support
+- Response messages in chat upon role joining/leaving
 
 ### Updated
 
 - Now uses discord.js rather than discord.io
 - Setup is now done via in-chat commands, rather than config file editing
-- Updated admin allow/disallow commands to not require the role to be @mentioned
-
-### Added
-
-- Multi-guild support
-- Response messages in chat upon role joining/leaving
 
 ## v1.1.1
 
