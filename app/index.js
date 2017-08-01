@@ -24,13 +24,13 @@ module.exports = (client) => {
 
 			switch (params[1].toLowerCase()) {
 				case config.allowCommand:
-					RolePerms.allow(message.guild, data, message.guild.roles.find(x => x.name === params[2])).then(response => {
+					RolePerms.allow(message.guild, data, message.guild.roles.find(x => normaliseRoleName(x.name) === normaliseRoleName(params[2]))).then(response => {
 						writeFile(data);
 						message.reply(response);
 					}).catch(message.reply);
 					break;
 				case config.disallowCommand:
-					RolePerms.disallow(message.guild, data, message.guild.roles.find(x => x.name === params[2])).then(response => {
+					RolePerms.disallow(message.guild, data, message.guild.roles.find(x => normaliseRoleName(x.name) === normaliseRoleName(params[2]))).then(response => {
 						writeFile(data);
 						message.reply(response);
 					}).catch(message.reply);
@@ -38,9 +38,9 @@ module.exports = (client) => {
 			}
 		}
 		else if (message.content.startsWith(config.joinCommand)) //user is trying to join a role
-			RoleManagement.join(message.guild, message.member, data, message.content.split(" ")[1]).then(response => message.reply(response)).catch(response => message.reply(response));
+			RoleManagement.join(message.guild, message.member, data, normaliseRoleName(message.content.split(" ")[1])).then(response => message.reply(response)).catch(response => message.reply(response));
 		else if (message.content.startsWith(config.leaveCommand)) //user is trying to leave a role
-			RoleManagement.leave(message.guild, message.member, data, message.content.split(" ")[1]).then(response => message.reply(response)).catch(response => message.reply(response));
+			RoleManagement.leave(message.guild, message.member, data, normaliseRoleName(message.content.split(" ")[1])).then(response => message.reply(response)).catch(response => message.reply(response));
 	});
 };
 
@@ -94,7 +94,11 @@ const RolePerms = {
 };
 
 function parseRole(guild, roleName) {
-	return guild.roles.find(x => x.name.toLowerCase() === roleName.toLowerCase()) || null;
+	return guild.roles.find(x => normaliseRoleName(x.name) === normaliseRoleName(roleName.toLowerCase())) || null;
+}
+
+function normaliseRoleName(roleName){
+	return roleName.toLowerCase().replace(" ", "");
 }
 
 function writeFile(data) {

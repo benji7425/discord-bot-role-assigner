@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Support for roles with spaces and/or caps
+
 ### Updated
 
 - Now uses discord.js rather than discord.io
