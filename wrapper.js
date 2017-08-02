@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
-const Util = require("discordjs-util");
+const DiscordUtil = require("discordjs-util");
 
 const client = new Discord.Client();
 
 process.on("uncaughtException", (err) => {
-	Util.dateError(err);
+	DiscordUtil.dateError(err);
 });
 
 client.login(require("./token.json").token);
@@ -14,5 +14,5 @@ client.on("ready", () => {
 });
 
 client.on("disconnect", eventData => {
-	Util.dateError(eventData.code, eventData.reason);
+	DiscordUtil.dateError(eventData.code, eventData.reason);
 });
