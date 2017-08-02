@@ -36,9 +36,9 @@ module.exports = (client) => {
 			}
 		}
 		else if (message.content.startsWith(config.joinCommand)) //user is trying to join a role
-			RoleManagement.join(message.guild, message.member, data, message.content.split(" ")[1]).catch(doCatch).then(doThen);
+			manageRole(message.guild, message.member, data, message.content.split(" ")[1], true).catch(doCatch).then(doThen);
 		else if (message.content.startsWith(config.leaveCommand)) //user is trying to leave a role
-			RoleManagement.leave(message.guild, message.member, data, message.content.split(" ")[1]).catch(doCatch).then(doThen);
+			manageRole(message.guild, message.member, data, message.content.split(" ")[1], false).catch(doCatch).then(doThen);
 	});
 };
 
@@ -83,29 +83,24 @@ const RolePerms = {
 	}
 };
 
-/**
- * Handling for managing user's roles
- */
-const RoleManagement = {
-	join: (guild, member, data, roleName) => {
-		return new Promise((resolve, reject) => {
-			const role = parseRole(guild, roleName);
-			if (role && data[guild.id].includes(normaliseRoleName(role.name)))
-				member.addRole(role).then(() => resolve("The role has been added")).catch(reject);
+function manageRole(guild, member, data, roleName, doAdd) {
+	return new Promise((resolve, reject) => {
+		const normalisedName = normaliseRoleName(roleName);
+		const role = parseRole(guild, normalisedName);
+
+		if (role) {
+			if (data[guild.id].includes(normalisedName))
+				if (doAdd)
+					member.addRole(role).then(resolve("The role has been added")).catch(reject);
+				else
+					member.removeRole(role).then(resolve("The role has been removed")).catch(reject);
 			else
-				reject("Role not found or not allowed");
-		});
-	},
-	leave: (guild, member, data, roleName) => {
-		return new Promise((resolve, reject) => {
-			const role = parseRole(guild, roleName);
-			if (role && data[guild.id].includes(normaliseRoleName(role.name)))
-				member.removeRole(role).then(() => resolve("The role has been removed")).catch(reject);
-			else
-				reject("Role not found or not allowed");
-		});
-	}
-};
+				reject("You are not permitted to join/leave this role");
+		}
+		else
+			reject(Util.format("Role with normalised name '%s' not found in guild '%s'", normalisedName, guild.name));
+	});
+}
 
 function parseRole(guild, roleName) {
 	return guild.roles.find(x => normaliseRoleName(x.name) === normaliseRoleName(roleName.toLowerCase())) || null;
