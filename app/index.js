@@ -89,7 +89,7 @@ function manageRole(guild, member, data, roleName, doAdd) {
 		const role = parseRole(guild, normalisedName);
 
 		if (role) {
-			if (data[guild.id].includes(normalisedName))
+			if (data[guild.id] && data[guild.id].includes(normalisedName))
 				if (doAdd)
 					member.addRole(role).then(resolve("The role has been added")).catch(reject);
 				else
@@ -98,7 +98,7 @@ function manageRole(guild, member, data, roleName, doAdd) {
 				reject("You are not permitted to join/leave this role");
 		}
 		else
-			reject(Util.format("Role with normalised name '%s' not found in guild '%s'", normalisedName, guild.name));
+			reject(Util.format("No such role '%s' found in guild '%s'", normalisedName, guild.name));
 	});
 }
 
@@ -107,7 +107,7 @@ function parseRole(guild, roleName) {
 }
 
 function normaliseRoleName(roleName) {
-	return roleName.toLowerCase().replace(/ /g, "");
+	return (roleName || "").toLowerCase().replace(/ /g, "");
 }
 
 function writeFile(data) {
