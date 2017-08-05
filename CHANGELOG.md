@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v2.0.0
 
 ### Added
 
@@ -8,6 +8,7 @@
 - Support for roles with spaces and/or caps
 - Multi-guild support
 - Response messages in chat upon role joining/leaving
+- "Playing" indicator with my website url
 
 ### Updated
 

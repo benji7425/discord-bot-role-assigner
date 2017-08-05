@@ -1,6 +1,6 @@
 {
   "name": "discord-bot-role-assigner",
-  "version": "2.0.0-b5",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
