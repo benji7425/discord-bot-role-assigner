@@ -17,6 +17,9 @@ module.exports = (client) => {
 	const data = FileSystem.existsSync(SAVE_FILE) ? JsonFile.readFileSync(SAVE_FILE) : {};
 
 	client.on("message", (message) => {
+		if (message.channel.type !== "text" || !message.member)
+			return;
+
 		const doCatch = e => { DiscordUtil.dateError(e); return e; },
 			doThen = m => message.reply(m || "An unknown error occured");
 
@@ -26,6 +29,9 @@ module.exports = (client) => {
 		{
 			const params = message.content.split(" "); //[ client.user.id, command, args ] expected
 
+			if (params.length < 2)
+				return;
+			
 			switch (params[1].toLowerCase()) {
 				case config.allowCommand:
 					RolePerms.allow(message.guild, data, params[2]).then(writeFile(data)).catch(doCatch).then(doThen);

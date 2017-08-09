@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.0.1
+
+### Fixed
+- Fix exception when no second parameter within command
+
 ## v2.0.0
 
 ### Added
