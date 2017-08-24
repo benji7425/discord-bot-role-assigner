@@ -2,7 +2,7 @@
   "name": "discord-bot-role-assigner",
   "version": "2.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "app/index.js",
   "dependencies": {
     "discord.js": "11.1.0",
     "discordjs-util": "git+https://github.com/benji7425/discordjs-util.git",
