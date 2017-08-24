@@ -12,8 +12,8 @@ const DiscordUtil = require("discordjs-util");
 const SAVE_FILE = "./guilds.json";
 
 //when loaded with require() by an external script, this acts as a kind of "on ready" function
-module.exports = (client) => {
-	const config = require("./config.json");
+module.exports = (client, config) => {
+	config = config || require("./config.json");
 	const data = FileSystem.existsSync(SAVE_FILE) ? JsonFile.readFileSync(SAVE_FILE) : {};
 
 	client.on("message", (message) => {

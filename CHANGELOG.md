@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.2
+
+### Added
+
+- Added ability to pass in configuration object on startup
+
 ## v2.0.1
 
 ### Fixed
