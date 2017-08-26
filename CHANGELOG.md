@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.3
+
+### Fixed
+
+- Fix bot not recognising commands if it's been nicknamed
+
 ## v2.0.2
 
 ### Added

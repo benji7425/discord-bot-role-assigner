@@ -23,7 +23,7 @@ module.exports = (client, config) => {
 		const doCatch = e => { DiscordUtil.dateError(e); return e; },
 			doThen = m => message.reply(m || "An unknown error occured");
 
-		if (message.content.startsWith(client.user.toString()) //user is @mention-ing the bot
+		if (message.content.startsWith(message.guild.me.toString()) //user is @mention-ing the bot
 			&& message.member.permissions.has("ADMINISTRATOR") //user has admin perms
 			&& message.member.id !== client.user.id) //isn't the bot accidentally triggering itself
 		{
