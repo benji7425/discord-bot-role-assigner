@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.1.0
+
+### Updated
+
+- Add default DM response
+- Make save file configurable to allow use as a module with other bots
+- Update config file structure
+
 ## v2.0.3
 
 ### Fixed
