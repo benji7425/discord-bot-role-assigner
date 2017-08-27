@@ -1,6 +1,18 @@
 {
-	"allowCommand": "allow",
-	"disallowCommand": "disallow",
-	"joinCommand": "!joinrole",
-	"leaveCommand": "!leaverole"
+	"generic": {
+		"saveFile": "./guilds.json",
+		"saveIntervalSec": 60,
+		"defaultDMResponse": "This bot does not have any handling for direct messages. To learn more or get help please visit http://benji7425.github.io, or join my Discord server here: https://discord.gg/SSkbwSJ"
+	},
+	"commands": {
+		"admin": {
+			"version": "version",
+			"allowCommand": "allow",
+			"disallowCommand": "disallow"
+		},
+		"anyone": {
+			"joinCommand": "!joinrole",
+			"leaveCommand": "!leaverole"
+		}
+	}
 }
