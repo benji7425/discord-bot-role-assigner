@@ -65,6 +65,8 @@ const HandleMessage = {
 				case config.commands.admin.disallowCommand:
 					RolePerms.disallow(message.guild, guildsData, params[2]).then(writeFile(guildsData)).catch(doCatch).then(doThen);
 					break;
+				case config.commands.admin.viewRoles:
+					message.reply(guildData.join(", "));
 			}
 		}
 

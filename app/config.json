@@ -10,7 +10,8 @@
 			"version": "version",
 			"help": "help",
 			"allowCommand": "allow",
-			"disallowCommand": "disallow"
+			"disallowCommand": "disallow",
+			"viewRoles": "view-roles"
 		},
 		"anyone": {
 			"joinCommand": "!joinrole",
