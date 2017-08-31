@@ -2,11 +2,13 @@
 	"generic": {
 		"saveFile": "./guilds.json",
 		"saveIntervalSec": 60,
-		"defaultDMResponse": "This bot does not have any handling for direct messages. To learn more or get help please visit http://benji7425.github.io, or join my Discord server here: https://discord.gg/SSkbwSJ"
+		"defaultDMResponse": "This bot does not have any handling for direct messages. To learn more or get help please visit http://benji7425.github.io, or join my Discord server here: https://discord.gg/SSkbwSJ",
+		"helpResponse": "\n*Commands for %s*\n%s\n\nNeed more help? Join my discord to contact me directly! https://discord.gg/SSkbwSJ"
 	},
 	"commands": {
 		"admin": {
 			"version": "version",
+			"help": "help",
 			"allowCommand": "allow",
 			"disallowCommand": "disallow"
 		},

@@ -1,25 +1,33 @@
 //node imports
-const FileSystem = require("fs");
-const Util = require("util");
+const FileSystem = require("fs"); //manage files
+const Util = require("util"); //various node utilities
 
 //external lib imports
-const JsonFile = require("jsonfile");
+const JsonFile = require("jsonfile"); //save/load data to/from json
 
 //my imports
-const DiscordUtil = require("discordjs-util");
+const DiscordUtil = require("discordjs-util"); //some discordjs helper functions of mine
+
+const PackageJSON = require("../package.json"); //used to provide some info about the bot
 
 //global vars
 let writeFile = null;
 
-//when loaded with require() by an external script, this acts as a kind of "on ready" function
+//use module.exports as a psuedo "onready" function
 module.exports = (client, config = null) => {
 	config = config || require("./config.json");
 	const guildsData = FileSystem.existsSync(config.generic.saveFile) ? fromJSON(JsonFile.readFileSync(config.generic.saveFile)) : {}; //read data from file, or generate new one if file doesn't exist
-	writeFile = () => JsonFile.writeFile(config.generic.saveFile, guildsData, err => { if (err) DiscordUtil.dateError("Error writing file", err); });
-	setInterval(() => writeFile(), config.generic.saveIntervalSec * 1000); //set interval to save data to file
 
+	//create our writeFile function that will allow other functions to save data to json without needing access to the full guildsData or config objects
+	//then set an interval to automatically save data to file
+	writeFile = () => JsonFile.writeFile(config.generic.saveFile, guildsData, err => { if (err) DiscordUtil.dateError("Error writing file", err); });
+	setInterval(() => writeFile(), config.generic.saveIntervalSec * 1000);
+
+	//handle messages
 	client.on("message", message => {
 		if (message.author.id !== client.user.id) { //check the bot isn't triggering itself
+
+			//check whether we need to use DM or text channel handling
 			if (message.channel.type === "dm")
 				HandleMessage.dm(client, config, message);
 			else if (message.channel.type === "text" && message.member)
@@ -36,22 +44,35 @@ const HandleMessage = {
 		const doCatch = e => { DiscordUtil.dateError(e); return e; },
 			doThen = m => message.reply(m || "An unknown error occured");
 
-		//handle admins invoking commands
-		if (message.content.startsWith(message.guild.me.toString()) //user is @mention-ing the bot
-			&& message.member.permissions.has("ADMINISTRATOR")) //user has admin perms
-		{
-			const params = message.content.split(" "); //split the message at the spaces
+		const isCommand = message.content.startsWith(message.guild.me.toString());
+		const isAdminCommand = isCommand && message.member.permissions.has("ADMINISTRATOR");
+		const guildData = guildsData[message.guild.id];
 
-			//check which command was invoked
+		if (isAdminCommand) {
+			const params = message.content.split(/\ +/); //split the message at the spaces
+
+			//find which command was used and handle it
 			switch (params[1]) {
 				case config.commands.admin.version:
-					message.reply("v" + require("../package.json").version);
+					message.reply(`${PackageJSON.name || ""} v${PackageJSON.version}`);
+					break;
+				case config.commands.admin.help:
+					message.reply(formatHelp(config.generic.helpResponse, PackageJSON.name || "this bot", config.commands));
 					break;
 				case config.commands.admin.allowCommand:
 					RolePerms.allow(message.guild, guildsData, params[2]).then(writeFile(guildsData)).catch(doCatch).then(doThen);
 					break;
 				case config.commands.admin.disallowCommand:
 					RolePerms.disallow(message.guild, guildsData, params[2]).then(writeFile(guildsData)).catch(doCatch).then(doThen);
+					break;
+			}
+		}
+
+		if (isCommand) { //todo update anyone commands to use this
+			const params = message.content.split(/\ +/);
+
+			switch (params[1]) {
+				default:
 					break;
 			}
 		}
@@ -132,4 +153,18 @@ function normaliseRoleName(roleName) {
 
 function fromJSON(json) {
 	return json;
+}
+
+function formatHelp(responseMessage, botName, commandsObj) {
+	const getArr = (obj, prop) => Object.keys(obj[prop]).map(x => obj[prop][x]); //inline method to get array from json obj
+	const getJoinedArr = arr => arr.length > 0 ? arr.join("\n") : "*None available*"; //inline method to join array to string
+
+	//iterate over each commands group to add it to the response string
+	let commandsStr = "";
+	Object.keys(commandsObj).forEach(group => {
+		commandsStr += `\n**${group.charAt(0).toUpperCase() + group.slice(1)} commands:**\n`;
+		commandsStr += getJoinedArr(getArr(commandsObj, group));
+	});
+
+	return Util.format(responseMessage, botName, commandsStr);
 }

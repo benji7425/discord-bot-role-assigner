@@ -12,7 +12,7 @@ client.login(require("./token.json").token);
 client.on("ready", () => {
 	DiscordUtil.dateLog("Registered bot " + client.user.username);
 	require("./app/index.js")(client);
-	client.user.setGame("benji7425.github.io");
+	client.user.setPresence({ game: { name: "benji7425.github.io", type: 0 } });
 });
 
 client.on("disconnect", eventData => {
