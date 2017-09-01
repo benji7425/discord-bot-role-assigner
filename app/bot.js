@@ -4,15 +4,15 @@ module.exports = {
 	onCommand(commandObj, commandsObj, params, guildData, message) {
 		switch (commandObj.command) {
 			case commandsObj.allowRole.command:
-				return allowRole();
+				return allowRole(message.guild, guildData, params[0]);
 			case commandObj.disallowRole.command:
-				return disallowRole();
+				return disallowRole(guildData, params[0]);
 			case commandObj.viewRoles.command:
-				return viewRoles();
+				return viewRoles(guildData);
 			case commandObj.joinRole.command:
-				return joinRole();
+				return manageRole(message.guild, guildData, message.member, params[0], true);
 			case commandObj.leaveRole.command:
-				return leaveRole();
+				return manageRole(message.guild, guildData, message.member, params[0], false);
 		}
 	},
 	onNonCommandMsg(message, guildData) {
@@ -23,22 +23,65 @@ module.exports = {
 	}
 };
 
-function allowRole() {
-	//todo
+function allowRole(guild, guildData, roleName) {
+	return new Promise((resolve, reject) => {
+		const normalisedName = normaliseRoleName(roleName);
+
+		//check if we can find the role in the guild
+		if (guild.roles.find(x => normaliseRoleName(x.name)) === normalisedName) {
+			if (!guildData.allowedRoles.includes(normalisedName)) {
+				guildData.allowedRoles.push(normalisedName);
+				resolve("Role now allowed!");
+			}
+			else
+				resolve("Role already allowed!");
+		}
+		else
+			reject(`Unable to find role ${normalisedName} in guild ${guild.name}`);
+	});
 }
 
-function disallowRole() {
-	//todo
+function disallowRole(guildData, roleName) {
+	return new Promise((resolve, reject) => {
+		const normalisedName = normaliseRoleName(roleName);
+
+		if (guildData.allowedRoles.includes(normalisedName)) {
+			const idx = guildData.allowedRoles.indexOf(normalisedName);
+			guildData.allowedRoles.splice(idx, 1);
+			resolve("Role now disallowed");
+		}
+		else
+			reject("Role was not allowed in the first place");
+	});
 }
 
-function viewRoles() {
-	//todo
+function viewRoles(guildData) {
+	return Promise.resolve(guildData.allowedRoles.join(", "));
 }
 
-function joinRole() {
-	//todo
+function manageRole(guild, guildData, member, roleName, isJoining) {
+	return new Promise((resolve, reject) => {
+		const normalisedName = normaliseRoleName(roleName);
+		const role = parseRole(guild, normalisedName);
+
+		if (!role)
+			return reject("Role not found");
+
+		if (guildData.allowedRoles.includes(normalisedName)) {
+			if (isJoining)
+				member.addRole(role).then(() => resolve("The role has been added")).catch(reject);
+			else
+				member.removeRole(role).then(() => resolve("The role has been removed")).catch(reject);
+		}
+		else
+			reject("You are not permitted to join/leave this role");
+	});
 }
 
-function leaveRole() {
-	//todo
+function normaliseRoleName(roleName) {
+	return (roleName || "").toLowerCase().replace(/ /g, "");
+}
+
+function parseRole(guild, roleName) {
+	return guild.roles.find(x => normaliseRoleName(x.name) === normaliseRoleName(roleName.toLowerCase())) || null;
 }
