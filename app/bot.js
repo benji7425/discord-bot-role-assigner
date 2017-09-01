@@ -5,20 +5,20 @@ module.exports = {
 		switch (commandObj.command) {
 			case commandsObj.allowRole.command:
 				return allowRole(message.guild, guildData, params[0]);
-			case commandObj.disallowRole.command:
+			case commandsObj.disallowRole.command:
 				return disallowRole(guildData, params[0]);
-			case commandObj.viewRoles.command:
+			case commandsObj.viewRoles.command:
 				return viewRoles(guildData);
-			case commandObj.joinRole.command:
+			case commandsObj.joinRole.command:
 				return manageRole(message.guild, guildData, message.member, params[0], true);
-			case commandObj.leaveRole.command:
+			case commandsObj.leaveRole.command:
 				return manageRole(message.guild, guildData, message.member, params[0], false);
 		}
 	},
 	onNonCommandMsg(message, guildData) {
-		if (message.content.toLowerCase() === "!joinrole")
+		if (message.content.toLowerCase().startsWith("!joinrole"))
 			message.reply("Command has updated, please now use @bot joinrole");
-		else if (message.content.toLowerCase() === "!leaverole")
+		else if (message.content.toLowerCase().startsWith("!leaverole"))
 			message.reply("Command has updated, please now use @bot leaverole");
 	}
 };
@@ -28,7 +28,7 @@ function allowRole(guild, guildData, roleName) {
 		const normalisedName = normaliseRoleName(roleName);
 
 		//check if we can find the role in the guild
-		if (guild.roles.find(x => normaliseRoleName(x.name)) === normalisedName) {
+		if (guild.roles.find(x => normaliseRoleName(x.name) === normalisedName)) {
 			if (!guildData.allowedRoles.includes(normalisedName)) {
 				guildData.allowedRoles.push(normalisedName);
 				resolve("Role now allowed!");
