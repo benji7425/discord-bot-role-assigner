@@ -1,0 +1,9 @@
+{
+	"files.exclude": {
+		"log": true,
+		".npmrc": true,
+		"node_modules": true,
+		"node_cache": true,
+		"token.json": true
+	}
+}

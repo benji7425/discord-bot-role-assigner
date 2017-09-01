@@ -1,0 +1,12 @@
+{
+	"version": "0.1.0",
+	"main": "app/index.js",
+	"scripts": {
+		"start": "node bootstrap.js"
+	},
+	"dependencies": {
+		"discord.js": "11.1.0",
+		"discordjs-util": "git+https://github.com/benji7425/discordjs-util.git",
+		"jsonfile": "3.0.1"
+	}
+}
