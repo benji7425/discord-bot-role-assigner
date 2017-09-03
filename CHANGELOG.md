@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.1
+
+### Fixed
+
+- Fix regular users being unable to use commands
+
 ## v3.0.0
 
 ### Added

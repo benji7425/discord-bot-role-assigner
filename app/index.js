@@ -59,7 +59,7 @@ const HandleMessage = {
 			const command = split[1]; //extract the command used
 			const commandObj = config.commands[Object.keys(config.commands).find(x => config.commands[x].command.toLowerCase() === command)]; //find the matching command object
 
-			if (!commandObj || (!commandObj.admin && !userIsAdmin))
+			if (!commandObj || (commandObj.admin && !userIsAdmin))
 				return;
 
 			const params = split.slice(2, split.length); //extract the parameters passed for the command
