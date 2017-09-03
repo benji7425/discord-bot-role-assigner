@@ -16,13 +16,13 @@ Invite the bot to your server with [this link](https://discordapp.com/oauth2/aut
 
 ### Admin commands
 These require administrator permission in the guild
-- `@bot allow rolename` to allow users to join/leave the role
-- `@bot disallow rolename` to disallow users to join/leave the role
+- `@Role_Assigner allow rolename` to allow users to join/leave the role
+- `@Role_Assigner disallow rolename` to disallow users to join/leave the role
 
 ### User commands
 These can be run by any user in the guild
-- `!joinrole rolename` to join a role
-- `!leaverole rolename` to leave a role
+- `@Role_Assigner joinrole rolename` to join a role
+- `@Role_Assigner leaverole rolename` to leave a role
 
 ## Permissions needed
 
