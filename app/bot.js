@@ -16,10 +16,11 @@ module.exports = {
 		}
 	},
 	onNonCommandMsg(message, guildData) {
+		const botName = "@" + (message.guild.me.nickname || message.guild.me.user.username);
 		if (message.content.toLowerCase().startsWith("!joinrole"))
-			message.reply("Command has updated, please now use @bot joinrole");
+			message.reply(`This command has been updated, please now use *${botName} joinrole* instead.\nWant to learn more about the update? Join my Discord: discord.gg/SSkbwSJ`);
 		else if (message.content.toLowerCase().startsWith("!leaverole"))
-			message.reply("Command has updated, please now use @bot leaverole");
+			message.reply(`This command has been updated, please now use *${botName} leaverole* instead.\nWant to learn more about the update? Join my Discord: discord.gg/SSkbwSJ`);
 	}
 };
 
