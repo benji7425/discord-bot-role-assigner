@@ -2,20 +2,51 @@
 	"generic": {
 		"saveFile": "./guilds.json",
 		"saveIntervalSec": 60,
-		"defaultDMResponse": "This bot does not have any handling for direct messages. To learn more or get help please visit http://benji7425.github.io, or join my Discord server here: https://discord.gg/SSkbwSJ",
-		"helpResponse": "\n*Commands for %s*\n%s\n\nNeed more help? Join my discord to contact me directly! https://discord.gg/SSkbwSJ"
-	},
+		"website": "https://benji7425.github.io",
+		"discordInvite": "https://discord.gg/SSkbwSJ",
+		"defaultDMResponse": "This bot does not have any handling for direct messages. To learn more or get help please visit %s, or join my Discord server here: %s"	},
 	"commands": {
-		"admin": {
-			"version": "version",
-			"help": "help",
-			"allowCommand": "allow",
-			"disallowCommand": "disallow",
-			"viewRoles": "view-roles"
+		"version": {
+			"command": "version",
+			"description": "Returns the bot version",
+			"syntax": "version",
+			"admin": false
 		},
-		"anyone": {
-			"joinCommand": "!joinrole",
-			"leaveCommand": "!leaverole"
+		"help": {
+			"command": "help",
+			"description": "Display information about commands available to you",
+			"syntax": "help",
+			"admin": false
+		},
+		"allowRole": {
+			"command": "allow",
+			"description": "Allow users to assign this role to themselves",
+			"syntax": "allow <rolename>",
+			"admin": true
+		},
+		"disallowRole": {
+			"command": "disallow",
+			"description": "Stop allowing users to assign this role to themselves",
+			"syntax": "disallow <rolename>",
+			"admin": true
+		},
+		"viewRoles": {
+			"command": "view-roles",
+			"description": "View all the roles users are allowed to add via the bot",
+			"syntax": "view-roles",
+			"admin": true
+		},
+		"joinRole":{
+			"command": "joinrole",
+			"description": "Join a permitted role",
+			"syntax": "joinrole <rolename>",
+			"admin": false
+		},
+		"leaveRole": {
+			"command": "leaverole",
+			"description": "Leave a permitted role",
+			"syntax": "leaverole <rolename>",
+			"admin": false
 		}
 	}
 }

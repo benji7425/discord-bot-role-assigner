@@ -1,5 +1,15 @@
 # Changelog
 
+## v3.0.0
+
+### Added
+
+- Fancy new @bot help response
+
+### Updated
+- Back-end updates
+- Join and leave role commands now invoked by @mention-ing the bot
+
 ## v2.1.0
 
 ### Updated
