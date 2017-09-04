@@ -4,7 +4,8 @@
 		"saveIntervalSec": 60,
 		"website": "https://benji7425.github.io",
 		"discordInvite": "https://discord.gg/SSkbwSJ",
-		"defaultDMResponse": "This bot does not have any handling for direct messages. To learn more or get help please visit %s, or join my Discord server here: %s"	},
+		"defaultDMResponse": "This bot does not have any handling for direct messages. To learn more or get help please visit %s, or join my Discord server here: %s"
+	},
 	"commands": {
 		"version": {
 			"command": "version",
@@ -36,7 +37,7 @@
 			"syntax": "view-roles",
 			"admin": true
 		},
-		"joinRole":{
+		"joinRole": {
 			"command": "joinrole",
 			"description": "Join a permitted role",
 			"syntax": "joinrole <rolename>",
@@ -46,6 +47,12 @@
 			"command": "leaverole",
 			"description": "Leave a permitted role",
 			"syntax": "leaverole <rolename>",
+			"admin": false
+		},
+		"updateHelp": {
+			"command": "update-help",
+			"description": "Learn more about the recent update",
+			"syntax": "update-help",
 			"admin": false
 		}
 	}

@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.2
+
+### Updated
+
+- Update kickback when old commands are used to be less spammy
+
 ## v3.0.1
 
 ### Fixed
