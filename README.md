@@ -1,12 +1,16 @@
 # Discord role bot
 
+<!--summary-->
 A simple bot to allow users to join and leave certain roles
+<!--/summary-->
 
 ## Features
 
+<!--features-->
 - Toggle permissions for a role on and off
 - Simple command for user to join and leave permitted roles
 - Confirmation message indicating successful role addition
+<!--/features-->
 
 ## Invite the bot
 
