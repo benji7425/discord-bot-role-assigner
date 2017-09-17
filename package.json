@@ -2,7 +2,7 @@
   "version": "3.0.2",
   "main": "app/index.js",
   "scripts": {
-    "start": "node bootstrap.js"
+    "start": "node app/index.js token.json guilds.json"
   },
   "dependencies": {
     "discord.js": "11.1.0",
