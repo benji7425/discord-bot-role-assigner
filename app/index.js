@@ -3,11 +3,15 @@ const GuildData = require("./models/guild-data.js");
 
 //IMPLEMENTATIONS//
 function onTextMessage(message, guildData) {
-	const botName = "@" + (message.guild.me.nickname || message.guild.me.user.username);
-	if (message.content.toLowerCase().startsWith("!joinrole"))
-		message.reply(`The command you used has been updated, please use *${botName} joinrole* instead.\nAsk your server admin to run *${botName} update-help* to learn why this was necessary.`);
-	else if (message.content.toLowerCase().startsWith("!leaverole"))
-		message.reply(`The command you used has been updated, please use *${botName} leaverole* instead.\nAsk your server admin to run *${botName} update-help* to learn why this was necessary.`);
+	return new Promise((resolve, reject) => {
+		const botName = "@" + (message.guild.me.nickname || message.guild.me.user.username);
+		if (message.content.toLowerCase().startsWith("!joinrole"))
+			resolve(`The command you used has been updated, please use *${botName} joinrole* instead.\nAsk your server admin to run *${botName} update-help* to learn why this was necessary.`);
+		else if (message.content.toLowerCase().startsWith("!leaverole"))
+			resolve(`The command you used has been updated, please use *${botName} leaverole* instead.\nAsk your server admin to run *${botName} update-help* to learn why this was necessary.`);
+		else
+			resolve();
+	});
 }
 
 function allowRole({ command, params, guildData, botName, message, coreClient }) {
@@ -47,11 +51,11 @@ function viewRoles({ command, params, guildData, botName, message, coreClient })
 }
 
 function joinRole({ command, params, guildData, botName, message, coreClient }) {
-	manageRole(message.guild, guildData, message.member, params[0], true);
+	return manageRole(message.guild, guildData, message.member, params[0], true);
 }
 
 function leaveRole({ command, params, guildData, botName, message, coreClient }) {
-	manageRole(message.guild, guildData, message.member, params[0], false);
+	return manageRole(message.guild, guildData, message.member, params[0], false);
 }
 
 function updateHelp({ command, params, guildData, botName, message, coreClient }) {
