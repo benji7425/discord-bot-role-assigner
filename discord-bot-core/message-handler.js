@@ -14,7 +14,7 @@ const ParentPackageJSON = require("../package.json"); //used to provide some inf
  * @param {*} message Discord.Message
  */
 function handleDirectMessage(coreClient, message) {
-	message.reply(Util.format(Config.generic.defaultDMResponse, Config.generic.website, Config.generic.discordInvite));
+	message.reply(Util.format(Config.defaultDMResponse, Config.website, Config.discordInvite));
 }
 
 /**

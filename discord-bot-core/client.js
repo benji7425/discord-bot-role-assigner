@@ -86,7 +86,7 @@ function onReady(coreClient) {
  * @param {*} err 
  */
 function onUncaughtException(coreClient, err) {
-	DiscordUtil.dateError(err);
+	DiscordUtil.dateError(err.message || err);
 	DiscordUtil.dateLog("Destroying existing client...");
 	coreClient.actual.destroy().then(() => {
 		DiscordUtil.dateLog("Client destroyed, recreating...");
