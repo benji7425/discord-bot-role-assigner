@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.1.0
+
+### Updated
+
+- Updated error handling for Discord API errors
+- Updated a few command responses
+- Updated bootstrapping and command handling to use shared subrepo
+
 ## v3.0.2
 
 ### Updated
