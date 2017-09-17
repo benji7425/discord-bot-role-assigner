@@ -52,7 +52,9 @@ class CoreClient {
 				MessageHandler.handleDirectMessage(this, message);
 			else if (message.channel.type === "text" && message.member)
 				MessageHandler.handleTextMessage(this, message, this.guildsData)
-					.then(msg => { if (msg) message.reply(msg); })
+					.then(msg => {
+						if (msg) message.reply(msg);
+					})
 					.catch(err => {
 						message.reply(err);
 						DiscordUtil.dateError(`Command error in guild ${message.guild.name}\n`, err.message || err);
@@ -73,9 +75,10 @@ function onReady(coreClient) {
 
 	setInterval(() => coreClient.writeFile(), Config.saveIntervalSec * 1000);
 
-	coreClient.implementations.onReady(coreClient.actual)
-		.then(() => coreClient.writeFile())
-		.catch(err => DiscordUtil.dateError(err));
+	if (coreClient.implementations.onReady)
+		coreClient.implementations.onReady(coreClient.actual)
+			.then(() => coreClient.writeFile())
+			.catch(err => DiscordUtil.dateError(err));
 }
 
 /**
