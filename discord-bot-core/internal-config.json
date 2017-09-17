@@ -1,0 +1,21 @@
+{
+	"saveFile": "./%s-data.json",
+	"saveIntervalSec": 60,
+	"website": "https://benji7425.github.io",
+	"discordInvite": "https://discord.gg/SSkbwSJ",
+	"defaultDMResponse": "This bot does not have any handling for direct messages. To learn more or get help please visit %s, or join my Discord server here: %s",
+	"commands": {
+		"version": {
+			"command": "version",
+			"description": "Returns the bot version",
+			"syntax": "version",
+			"admin": false
+		},
+		"help": {
+			"command": "help",
+			"description": "Display information about commands available to you",
+			"syntax": "help",
+			"admin": false
+		}
+	}
+}
