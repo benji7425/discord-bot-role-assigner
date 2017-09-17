@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "11.2.0",
+    "discordjs-util": "git+https://github.com/benji7425/discordjs-util.git",
+    "jsonfile": "3.0.1",
+    "parent-package-json": "2.0.1",
+    "simple-file-writer": "2.0.0"
+  },
+  "name": "discord-bot-core",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benji7425/discord-bot-core.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benji7425/discord-bot-core/issues"
+  },
+  "homepage": "https://github.com/benji7425/discord-bot-core#readme",
+  "description": "Core code shared amongst my Discord bots"
+}
