@@ -5,7 +5,7 @@
     "start": "node app/index.js token.json guilds.json"
   },
   "dependencies": {
-    "discord.js": "11.1.0",
+    "discord.js": "11.2.0",
     "discordjs-util": "git+https://github.com/benji7425/discordjs-util.git",
     "jsonfile": "3.0.1"
   },
