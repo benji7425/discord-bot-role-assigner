@@ -6,7 +6,7 @@
 [subrepo]
 	remote = git@github.com:benji7425/discord-bot-core.git
 	branch = master
-	commit = d4572508a4311d04fdbc230c974ebebe49b70724
-	parent = 880b2324e602b29380e62f40597ce70af13ef751
+	commit = 8e6d6ce99e581f5ac5fb899112ef33bcf3e16a34
+	parent = acee217fccbe3363fdf7fb0c1e845156f378a3a9
 	method = merge
 	cmdver = 0.3.1

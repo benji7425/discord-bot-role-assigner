@@ -76,7 +76,7 @@ function onReady(coreClient) {
 	setInterval(() => coreClient.writeFile(), Config.saveIntervalSec * 1000);
 
 	if (coreClient.implementations.onReady)
-		coreClient.implementations.onReady(coreClient.actual)
+		coreClient.implementations.onReady(coreClient)
 			.then(() => coreClient.writeFile())
 			.catch(err => DiscordUtil.dateError(err));
 }
