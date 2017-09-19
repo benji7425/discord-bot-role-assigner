@@ -1,12 +1,12 @@
 {
-  "version": "3.1.0",
+  "version": "3.1.1",
   "main": "app/index.js",
   "scripts": {
+	"postinstall": "cd ./discord-bot-core && npm install",
     "start": "node app/index.js token.json guilds.json"
   },
   "dependencies": {
     "discord.js": "11.2.0",
-    "discordjs-util": "git+https://github.com/benji7425/discordjs-util.git",
     "jsonfile": "3.0.1"
   },
   "name": "discord-bot-role-assigner",

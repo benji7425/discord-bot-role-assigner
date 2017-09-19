@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.1
+
+### Fixed
+
+- Fixed some incorrect old module references in the code that would have cause problems sooner or later
+
 ## v3.1.0
 
 ### Updated
