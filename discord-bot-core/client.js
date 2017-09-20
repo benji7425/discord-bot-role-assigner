@@ -56,8 +56,10 @@ class CoreClient {
 						if (msg) message.reply(msg);
 					})
 					.catch(err => {
-						message.reply(err);
-						DiscordUtil.dateError(`Command error in guild ${message.guild.name}\n`, err.message || err);
+						if (err) {
+							message.reply(err);
+							DiscordUtil.dateError(`Command error in guild ${message.guild.name}\n`, err.message || err);
+						}
 					})
 					.then(() => this.writeFile());
 		});

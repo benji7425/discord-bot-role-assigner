@@ -41,7 +41,7 @@ function handleTextMessage(coreClient, message, guildsData) {
 		const invoke = coreClient.implementations[commandProp];
 
 		if (!command || !params || isNaN(expectedParamCount))
-			return reject(`'${message.content.split(" ")[1]}' is not a recognised command`);
+			return reject();
 
 		if (command === Config.commands.version)
 			resolve(`${ParentPackageJSON.name} v${ParentPackageJSON.version}`);
