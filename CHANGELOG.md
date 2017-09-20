@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.2
+
+### Updated
+
+- Removed "command not recognised" response, it caused 'fake' errors if multiple bots being run off the same token
+
 ## v3.1.1
 
 ### Fixed
