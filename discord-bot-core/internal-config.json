@@ -17,5 +17,10 @@
 			"syntax": "help",
 			"admin": false
 		}
-	}
+	},
+	"debugIgnores":[
+		"[ws] [connection] Sending a heartbeat",
+		"[ws] [connection] Heartbeat acknowledged",
+		"Authenticated using token"
+	]
 }

@@ -66,6 +66,11 @@ class CoreClient {
 					.then(() => this.writeFile());
 		});
 
+		this.actual.on("debug", info => {
+			if (!Config.debugIgnores.some(x => info.startsWith(x)))
+				DiscordUtil.dateLog(info);
+		});
+
 		this.actual.login(this.token);
 	}
 }
@@ -77,7 +82,7 @@ function onReady(coreClient) {
 	if (isStartupRun) {
 		setInterval(() => coreClient.writeFile(), Config.saveIntervalSec * 1000);
 
-		if(coreClient.implementations.onNewClientReady)
+		if (coreClient.implementations.onNewClientReady)
 			coreClient.implementations.onNewClientReady(coreClient)
 				.then(() => coreClient.writeFile())
 				.catch(err => DiscordUtil.dateError(err));
