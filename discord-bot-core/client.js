@@ -10,6 +10,8 @@ const DiscordUtil = require("./util.js"); //some helper methods
 const MessageHandler = require("./message-handler.js"); //message handling
 const Config = require("./internal-config.json"); //some configuration values
 
+let isStartupRun = true;
+
 class CoreClient {
 	/**
 	 * @param {string} token 
@@ -72,10 +74,19 @@ class CoreClient {
  * @param {*} coreClient 
  */
 function onReady(coreClient) {
+	if (isStartupRun) {
+		setInterval(() => coreClient.writeFile(), Config.saveIntervalSec * 1000);
+
+		if(coreClient.implementations.onNewClientReady)
+			coreClient.implementations.onNewClientReady(coreClient)
+				.then(() => coreClient.writeFile())
+				.catch(err => DiscordUtil.dateError(err));
+
+		isStartupRun = false;
+	}
+
 	coreClient.actual.user.setGame("benji7425.github.io");
 	DiscordUtil.dateLog("Registered bot " + coreClient.actual.user.username);
-
-	setInterval(() => coreClient.writeFile(), Config.saveIntervalSec * 1000);
 
 	if (coreClient.implementations.onReady)
 		coreClient.implementations.onReady(coreClient)
@@ -92,6 +103,7 @@ function onUncaughtException(coreClient, err) {
 	DiscordUtil.dateLog("Destroying existing client...");
 	coreClient.actual.destroy().then(() => {
 		DiscordUtil.dateLog("Client destroyed, recreating...");
+		isStartupRun = true;
 		coreClient.actual = new Discord.Client();
 		coreClient.bootstrap();
 	});
