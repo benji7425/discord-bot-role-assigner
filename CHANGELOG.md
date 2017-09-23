@@ -1,5 +1,15 @@
 # Changelog
 
+## v3.1.3
+
+### Added
+
+- Verbose logging to console when the bot is running
+
+### Updated
+
+- Removed "this command has been updated" message, as it's not used anymore
+
 ## v3.1.2
 
 ### Updated
