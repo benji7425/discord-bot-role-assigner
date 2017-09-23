@@ -55,11 +55,12 @@ class CoreClient {
 			else if (message.channel.type === "text" && message.member)
 				MessageHandler.handleTextMessage(this, message, this.guildsData)
 					.then(msg => {
-						if (msg) message.reply(msg);
+						if (msg)
+							message.reply(msg);
 					})
 					.catch(err => {
 						if (err) {
-							message.reply(err);
+							message.reply(err.message || err);
 							DiscordUtil.dateError(`Command error in guild ${message.guild.name}\n`, err.message || err);
 						}
 					})

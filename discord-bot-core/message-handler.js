@@ -31,8 +31,11 @@ function handleTextMessage(coreClient, message, guildsData) {
 		if (!guildData)
 			guildData = guildsData[message.guild.id] = new coreClient.guildDataModel({ id: message.guild.id });
 
-		if (!isCommand)
-			return coreClient.implementations.onTextMessage(message, guildData).then(msg => resolve(msg));
+		if (!isCommand && coreClient.implementations.onTextMessage)
+			return coreClient.implementations.onTextMessage(message, guildData).then(msg => {
+				if (msg)
+					resolve(msg);
+			});
 
 		Object.assign(coreClient.commands, Config.commands);
 		const userIsAdmin = message.member.permissions.has("ADMINISTRATOR");
