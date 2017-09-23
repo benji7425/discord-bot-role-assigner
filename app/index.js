@@ -2,18 +2,6 @@ const Core = require("../discord-bot-core");
 const GuildData = require("./models/guild-data.js");
 
 //IMPLEMENTATIONS//
-function onTextMessage(message, guildData) {
-	return new Promise((resolve, reject) => {
-		const botName = "@" + (message.guild.me.nickname || message.guild.me.user.username);
-		if (message.content.toLowerCase().startsWith("!joinrole"))
-			resolve(`The command you used has been updated, please use *${botName} joinrole* instead.\nAsk your server admin to run *${botName} update-help* to learn why this was necessary.`);
-		else if (message.content.toLowerCase().startsWith("!leaverole"))
-			resolve(`The command you used has been updated, please use *${botName} leaverole* instead.\nAsk your server admin to run *${botName} update-help* to learn why this was necessary.`);
-		else
-			resolve();
-	});
-}
-
 function allowRole({ command, params, guildData, botName, message, coreClient }) {
 	return new Promise((resolve, reject) => {
 		const normalisedName = normaliseRoleName(params[0]);
@@ -98,7 +86,6 @@ const token = require("../" + process.argv[2]).token,
 	dataFile = process.argv[3],
 	commands = require("./commands.json"),
 	implementations = {
-		onTextMessage,
 		allowRole,
 		disallowRole,
 		viewRoles,
