@@ -1,5 +1,18 @@
 # Changelog
 
+## v3.2.0
+
+### Added
+
+- Extra responses to the user
+	- Tell the user if they try to join a role they alraedy have
+	- Tell the user if they try to leave a role they didn't have in the first place
+- Debug logging of discord.js connection messages
+
+### Updated
+
+- Updated some connection code to hopefuly be a bit more stable
+
 ## v3.1.3
 
 ### Added
