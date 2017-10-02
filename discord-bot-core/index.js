@@ -1,10 +1,13 @@
-const Config = require("./internal-config.json");
+// @ts-ignore
+const InternalConfig = require("./internal-config.json");
 
 module.exports = {
-	Client: require("./client.js"),
-	util: require("./util.js"),
+	Client: require("./Client.js"),
+	BaseGuildData: require("./BaseGuildData.js"),
+	Command: require("./Command.js"),
+	util: require("./Util.js"),
 	details: {
-		website: Config.website,
-		discordInvite: Config.discordInvite
+		website: InternalConfig.website,
+		discordInvite: InternalConfig.discordInvite
 	}
 };

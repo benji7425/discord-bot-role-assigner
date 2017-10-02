@@ -5,7 +5,8 @@
     "discord.js": "11.2.0",
     "jsonfile": "3.0.1",
     "parent-package-json": "2.0.1",
-    "simple-file-writer": "2.0.0"
+	"simple-file-writer": "2.0.0",
+	"require-all": "2.2.0"
   },
   "name": "discord-bot-core",
   "repository": {
