@@ -1,4 +1,5 @@
 const Core = require("../../discord-bot-core");
+const Internal = require("../internal.js");
 
 module.exports = new Core.Command({
 	name: "allow",
@@ -10,10 +11,10 @@ module.exports = new Core.Command({
 
 function invoke({ message, params, guildData, client }) {
 	return new Promise((resolve, reject) => {
-		const normalisedName = normaliseRoleName(params[0]);
+		const normalisedName = Internal.normaliseRoleName(params[0]);
 
 		//check if we can find the role in the guild
-		if (message.guild.roles.find(x => normaliseRoleName(x.name) === normalisedName)) {
+		if (message.guild.roles.find(x => Internal.normaliseRoleName(x.name) === normalisedName)) {
 			if (!guildData.allowedRoles.includes(normalisedName)) {
 				guildData.allowedRoles.push(normalisedName);
 				resolve("Role now allowed!");

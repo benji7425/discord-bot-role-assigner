@@ -1,4 +1,5 @@
 const Core = require("../../discord-bot-core");
+const Internal = require("../internal.js");
 
 module.exports = new Core.Command({
 	name: "leaverole",
@@ -9,5 +10,5 @@ module.exports = new Core.Command({
 });
 
 function invoke({ message, params, guildData, client }) {
-	return manageRole(message.guild, guildData, message.member, params[0], false);
+	return Internal.manageRole(message.guild, guildData, message.member, params[0], false);
 }

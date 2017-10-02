@@ -1,4 +1,5 @@
 const Core = require("../../discord-bot-core");
+const Internal = require("../internal.js");
 
 module.exports = new Core.Command({
 	name: "disallow",
@@ -10,7 +11,7 @@ module.exports = new Core.Command({
 
 function invoke({ message, params, guildData, client }) {
 	return new Promise((resolve, reject) => {
-		const normalisedName = normaliseRoleName(params[0]);
+		const normalisedName = Internal.normaliseRoleName(params[0]);
 
 		if (guildData.allowedRoles.includes(normalisedName)) {
 			const idx = guildData.allowedRoles.indexOf(normalisedName);
