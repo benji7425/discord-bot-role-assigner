@@ -10,5 +10,7 @@ module.exports = new Core.Command({
 });
 
 function invoke({ message, params, guildData, client }) {
+	if (!message.member.roles.find(x => Internal.normaliseRoleName(x.name) === Internal.normaliseRoleName(params[0])))
+		return Promise.reject("You did not have this role in the first place!");
 	return Internal.manageRole(message.guild, guildData, message.member, params[0], false);
 }
