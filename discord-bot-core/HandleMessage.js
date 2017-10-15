@@ -5,7 +5,8 @@ const InternalConfig = require("./internal-config.json");
 
 /**@param param*/
 function handleMessage(client, message, commands, guildData) {
-	if (!message.content.startsWith(message.guild.me.toString())) //criteria for a command is the bot being tagged
+	if (!message.content.startsWith(message.guild.me.toString()) //criteria for a command is the bot being tagged
+			&& !message.content.startsWith(message.guild.me.toString().replace("!", ""))) //hacky fix for android mentions not including an exclamation mark
 		return;
 
 	const botName = "@" + (message.guild.me.nickname || message.guild.me.user.username),
