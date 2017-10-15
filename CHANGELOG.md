@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.2.1.
+
+### Fixed
+
+- Fixed commands not being recognised when invoked on android devices
+
 ## v3.2.0
 
 ### Added
