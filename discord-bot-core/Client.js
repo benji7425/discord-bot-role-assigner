@@ -42,7 +42,7 @@ module.exports = class Client extends Discord.Client {
 	}
 
 	onReady() {
-		this.user.setGame(InternalConfig.website.replace("http://", ""));
+		this.user.setGame(InternalConfig.website.replace(/^https?:\/\//, ""));
 		CoreUtil.dateLog(`Registered bot ${this.user.username}`);
 	}
 
