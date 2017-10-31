@@ -15,7 +15,7 @@ A simple bot to allow users to join and leave certain roles
 ## Invite
 
 By inviting this bot to your server you agree to the [terms and conditions](#privacy-statement) laid out in the privacy section of this document.  
-If you agree, invite to your server with [this link](https://discordapp.com/oauth2/authorize?client_id=341303774838652928&scope=bot&permissions=0x10000c00).
+If you agree, invite to your server with [this link](https://discordapp.com/oauth2/authorize?client_id=341303774838652928&scope=bot&permissions=0x10004c00).
 
 ## Setup
 
@@ -36,11 +36,12 @@ These can be run by any user in the guild
 The bot requires certain permissions, which you are prompted for on the invite screen.
 Each permission has a reason for being required, explained below.
 
-| Permission     | Reason                                                            |
-|----------------|-------------------------------------------------------------------|
-| Read messsages | Detect when a command is used                                     |
-| Send messages  | Confirmation that the command was successful                      |
-| Manage roles   | Assign and remove roles to/from a user when they use the commands |
+| Permission     | Reason                                                              |
+|----------------|---------------------------------------------------------------------|
+| Read messsages | Detect when a command is used                                       |
+| Send messages  | Confirmation that the command was successful                        |
+| Manage roles   | Assign and remove roles to/from a user when they use the commands   |
+| Embed links    | Responses to 'help' requests use message embeds for nice formatting |
 
 ## Privacy statement
 
@@ -62,6 +63,9 @@ Should you wish for the data stored about your server to be removed, please cont
 3. Run `npm install`
 4. Add *token.json* in the root folder: `{ "token": "your-token-goes-here" }`
 5. Run `npm start`
+
+**Note for git users**  
+If you cloned the repository with git, make sure you `git reset --hard vX.Y` to a specific version, as latest master isn't always production ready!
 
 ## Need help?
 
