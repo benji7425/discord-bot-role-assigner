@@ -1,6 +1,7 @@
-// @ts-ignore
 const Discord = require("discord.js");
+// @ts-ignore
 const ParentPackageJSON = require("../package.json");
+// @ts-ignore
 const InternalConfig = require("./internal-config.json");
 
 /**@param param*/

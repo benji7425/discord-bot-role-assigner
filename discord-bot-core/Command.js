@@ -7,6 +7,10 @@ module.exports = class Command {
 		this.admin = admin;
 		this.invoke = invoke;
 
-		this.expectedParamCount = this.syntax.split(/ +/).length - 1;
+		const params = this.syntax.split(/ +/);
+		const optionalParams = params.filter(x => x.match(/^\[.+\]$/));
+
+		this.maxParamCount = params.length - 1;
+		this.expectedParamCount = this.maxParamCount - optionalParams.length;
 	}
 };
