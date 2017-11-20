@@ -1,6 +1,18 @@
 # Changelog
 
-## v3.2.1.
+## v3.2.2
+
+### Added
+
+- Some additional debug.log logging to help with identifying errors
+- Removal of data when bot kicked from guild
+
+### Updated
+
+- Route a lot of mostly irrelevant console spam to a file instead of the console
+- Updated launch command to pass max-old-space-size parameter to limit memory usage
+
+## v3.2.1
 
 ### Fixed
 

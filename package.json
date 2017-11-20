@@ -1,9 +1,9 @@
 {
-  "version": "3.2.1",
+  "version": "3.2.2",
   "main": "app/index.js",
   "scripts": {
 	"postinstall": "cd ./discord-bot-core && npm install",
-    "start": "node app/index.js token.json guilds.json"
+    "start": "node app/index.js token.json guilds.json --max-old-space-size=50 --name=role-assigner"
   },
   "dependencies": {
     "discord.js": "11.2.0",
