@@ -21,15 +21,15 @@ If you agree, invite to your server with [this link](https://discordapp.com/oaut
 
 **Admin only**
 These require administrator permission in the guild
-- `@Role_Assigner allow rolename` to allow users to join/leave the role
-- `@Role_Assigner disallow rolename` to disallow users to join/leave the role
+- `@Role Assigner allow rolename` to allow users to join/leave the role
+- `@Role Assigner disallow rolename` to disallow users to join/leave the role
 
 ## Usage
 
 ### User commands
 These can be run by any user in the guild
-- `@Role_Assigner joinrole rolename` to join a role
-- `@Role_Assigner leaverole rolename` to leave a role
+- `@Role Assigner joinrole rolename` to join a role
+- `@Role Assigner leaverole rolename` to leave a role
 
 ## Permissions
 
