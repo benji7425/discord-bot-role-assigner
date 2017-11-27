@@ -1,5 +1,4 @@
 module.exports = class Command {
-	/**@param param */
 	constructor({ name, description, syntax, admin, invoke }) {
 		this.name = name;
 		this.description = description;

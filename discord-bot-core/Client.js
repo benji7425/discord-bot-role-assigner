@@ -8,12 +8,6 @@ const HandleMessage = require("./HandleMessage.js");
 const InternalConfig = require("./internal-config.json");
 
 module.exports = class Client extends Discord.Client {
-	/**
-	 * @param {*} token 
-	 * @param {*} dataFile 
-	 * @param {*} commandsDir 
-	 * @param {*} guildDataModel 
-	 */
 	constructor(token, dataFile, commandsDir, guildDataModel) {
 		super();
 
@@ -62,7 +56,8 @@ module.exports = class Client extends Discord.Client {
 
 	onDebug(info) {
 		info = info.replace(/Authenticated using token [^ ]+/, "Authenticated using token [redacted]");
-		CoreUtil.dateDebug(info);
+		if (!InternalConfig.debugIgnores.some(x => info.startsWith(x)))
+			CoreUtil.dateDebug(info);
 	}
 
 	onGuildCreate(guild) {
@@ -91,9 +86,6 @@ module.exports = class Client extends Discord.Client {
 			err => { if (err) CoreUtil.dateError(`Error writing data file! ${err.message || err}`); });
 	}
 
-	/**
-	 * @param {*} json
-	 */
 	fromJSON(json) {
 		const guildsData = Object.keys(json);
 		guildsData.forEach(guildID => {

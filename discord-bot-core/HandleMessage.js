@@ -4,7 +4,6 @@ const ParentPackageJSON = require("../package.json");
 // @ts-ignore
 const InternalConfig = require("./internal-config.json");
 
-/**@param param*/
 function handleMessage(client, message, commands, guildData) {
 	if (!message.content.startsWith(message.guild.me.toString()) //criteria for a command is the bot being tagged
 			&& !message.content.startsWith(message.guild.me.toString().replace("!", ""))) //hacky fix for android mentions not including an exclamation mark
@@ -33,7 +32,6 @@ function handleMessage(client, message, commands, guildData) {
 			});
 }
 
-/**@param param*/
 function handleInternalCommand(message, split, commands, isMemberAdmin) {
 	if (!split[1])
 		return;
@@ -56,12 +54,6 @@ function handleInternalCommand(message, split, commands, isMemberAdmin) {
 	}
 }
 
-/**
- * Create a help embed for available commands
- * @param {string} name name of the bot
- * @param {*[]} commands commands array
- * @param {boolean} userIsAdmin whether the user is admin
- */
 function createHelpEmbed(name, commands, userIsAdmin) {
 	const commandsArr = Object.keys(commands).map(x => commands[x]).filter(x => userIsAdmin || !x.admin);
 
