@@ -1,5 +1,6 @@
+// @ts-ignore
+const InternalConfig = require("./internal-config.json");
 const Console = require("console");
-const Discord = require("discord.js");
 const SimpleFileWriter = require("simple-file-writer");
 
 const logWriter = new SimpleFileWriter("./console.log");
@@ -8,10 +9,16 @@ const debugLogWriter = new SimpleFileWriter("./debug.log");
 function ask(client, textChannel, member, question) {
 	//return a promise which will resolve once the user next sends a message in this textChannel
 	return new Promise((resolve, reject) => {
+		const cancelAsk = () => {
+			client.removeListener("message", handler);
+			textChannel.send("Response to question timed out");
+		};
+
+		const askTimeout = setTimeout(cancelAsk, InternalConfig.askTimeout);
+
 		const handler = responseMessage => {
-			if (responseMessage.channel.id === textChannel.id &&
-				responseMessage.member.id === member.id) {
-				client.removeListener("message", handler);
+			if (responseMessage.channel.id === textChannel.id && responseMessage.member.id === member.id) {
+				clearTimeout(askTimeout);
 				resolve(responseMessage);
 			}
 		};
@@ -28,6 +35,10 @@ function dateLog(...args) {
 
 function dateError(...args) {
 	doDateLog(Console.error, logWriter, args, "ERROR");
+}
+
+function dateDebugError(...args) {
+	doDateLog(null, null, args, "DEBUG ERROR");
 }
 
 function dateDebug(...args) {
@@ -51,12 +62,13 @@ function formatArgs(args) {
 }
 
 function formatArgsForFile(args) {
-	return args.join("") + "\n";
+	return args.join(" ") + "\n";
 }
 
 module.exports = {
 	dateError,
 	dateLog,
 	dateDebug,
+	dateDebugError,
 	ask
 };

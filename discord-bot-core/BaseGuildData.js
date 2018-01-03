@@ -1,5 +1,9 @@
-module.exports = class BaseGuildData {
-	constructor(id) {
-		this.id = id;
+const Camo = require("camo");
+
+module.exports = class BaseGuildData extends Camo.Document {
+	constructor() {
+		super();
+
+		this.guildID = String;
 	}
 };
