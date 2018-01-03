@@ -1,11 +1,10 @@
 {
-	"saveIntervalSec": 60,
+	"dbCompactionSchedule": "0 0 0,3,6,9 * * *",
 	"website": "https://benji7425.github.io",
 	"discordInvite": "https://discord.gg/SSkbwSJ",
-	"defaultDMResponse": "This bot does not have any handling for direct messages. To learn more or get help please visit %s, or join my Discord server here: %s",
-	"reconnectTimeout": 5000,
-	"debugIgnores":[
+	"debugIgnores": [
 		"[ws] [connection] Sending a heartbeat",
 		"[ws] [connection] Heartbeat acknowledged"
-	]
+	],
+	"askTimeout": 60000
 }
