@@ -1,4 +1,4 @@
-# Discord role bot
+# Discord Role Assigner
 
 <!--summary-->
 A simple bot to allow users to join and leave certain roles
