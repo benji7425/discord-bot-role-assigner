@@ -61,7 +61,7 @@ Should you wish for the data stored about your server to be removed, please cont
 1. Clone the repository, or download and extract the zip file (preferrably from the release page)
 2. Make sure you have *npm* and *git* installed
 3. Run `npm install`
-4. Add *token.json* in the root folder: `{ "token": "your-token-goes-here" }`
+4. Add *token.json* in the root folder (make sure to include the quotes ""): `"your-token-goes-here"`
 5. Run `npm start`
 
 **Note for git users**  
