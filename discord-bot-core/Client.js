@@ -19,8 +19,7 @@ module.exports = class Client extends Discord.Client {
 	constructor(token, commandsDir, guildDataModel) {
 		super({
 			messageCacheMaxSize: 16,
-			messageCacheLifetime: 60,
-			messageSweepInterval: 480
+			disabledEvents: InternalConfig.disabledEvents
 		});
 
 		this._token = token;
@@ -100,6 +99,4 @@ function compactCollections() {
 	  and camo is designed to work with both NeDB and MongoDB, which is presumably why it doesn't alraedy exist */
 	for (let collectionName of Object.keys(neDB._collections))
 		neDB._collections[collectionName].persistence.compactDatafile();
-
-	Util.dateLog("Executed compaction on loaded NeDB collections");
 }

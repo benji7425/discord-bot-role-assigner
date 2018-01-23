@@ -17,7 +17,7 @@ function ask(client, textChannel, member, question) {
 		const askTimeout = setTimeout(cancelAsk, InternalConfig.askTimeout);
 
 		const handler = responseMessage => {
-			if (responseMessage.channel.id === textChannel.id && responseMessage.member.id === member.id) {
+            if (responseMessage.channel.id === textChannel.id && responseMessage.member && responseMessage.member.id === member.id) {
 				clearTimeout(askTimeout);
 				resolve(responseMessage);
 			}
