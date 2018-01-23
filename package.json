@@ -3,9 +3,10 @@
   "main": "app/index.js",
   "scripts": {
     "postinstall": "cd ./discord-bot-core && npm install",
-    "start": "node app/index.js --name=role-assigner"
+    "start": "node discord-bot-core/monitor.js app/index.js --name=role-assigner"
   },
   "dependencies": {
+    "@types/node": "9.3.0",
     "discord.js": "11.2.0",
     "eslint": "4.14.0",
     "jsonfile": "3.0.1"
