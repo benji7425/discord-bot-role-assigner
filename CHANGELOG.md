@@ -1,4 +1,8 @@
 # Changelog
+## v3.3.1
+### Fixed
+- Fixed loss of data on Discord outage
+
 ## v3.3.0
 ### Updated
 - Updated data storage to use a NeDB database rather than a json file
