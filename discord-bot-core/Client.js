@@ -32,7 +32,6 @@ module.exports = class Client extends Discord.Client {
 		this.on("message", this._onMessage);
 		this.on("debug", this._onDebug);
 		this.on("guildCreate", this._onGuildCreate);
-		this.on("guildDelete", this._onGuildDelete);
 		process.on("uncaughtException", err => this._onUnhandledException(this, err));
 	}
 
