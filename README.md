@@ -9,13 +9,13 @@ A simple bot to allow users to join and leave certain roles
 <!--features-->
 - Toggle permissions for a role on and off
 - Simple command for user to join and leave permitted roles
-- Confirmation message indicating successful role addition
+- Configure an invite to attach a specific role to a new member when they use that invite
 <!--/features-->
 
 ## Invite
 
 By inviting this bot to your server you agree to the [terms and conditions](#privacy-statement) laid out in the privacy section of this document.  
-If you agree, invite to your server with [this link](https://discordapp.com/oauth2/authorize?client_id=341303774838652928&scope=bot&permissions=0x10004c00).
+If you agree, invite to your server with [this link](https://discordapp.com/oauth2/authorize?client_id=341303774838652928&scope=bot&permissions=0x10004c20).
 
 ## Setup
 
@@ -42,6 +42,7 @@ Each permission has a reason for being required, explained below.
 | Send messages  | Confirmation that the command was successful                        |
 | Manage roles   | Assign and remove roles to/from a user when they use the commands   |
 | Embed links    | Responses to 'help' requests use message embeds for nice formatting |
+| Manage server  | Read server invites for role assigning when user joins with invite  |
 
 ## Privacy statement
 
