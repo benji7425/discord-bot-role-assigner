@@ -12,7 +12,7 @@
 	"rules": {
 		"indent": [
 			"warn",
-			"tab",
+			4,
 			{
 				"SwitchCase": 1
 			}
