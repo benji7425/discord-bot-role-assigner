@@ -17,7 +17,7 @@ function updateInviteUsesForGuild(client, guildData) {
 function updateInviteUsesForAllGuilds(client) {
     GuildData.find({}).then(guildDatas => {
         for (let guildData of guildDatas.filter(guildData => client.guilds.get(guildData.guildID)))
-            updateInviteUsesForGuild(guildData);
+            updateInviteUsesForGuild(client, guildData);
     });
 }
 

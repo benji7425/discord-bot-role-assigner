@@ -5,6 +5,8 @@ const InviteManagement = require("./internals/invite-management.js");
 // @ts-ignore
 const client = new Core.Client(require("../token.json"), __dirname + "/commands", GuildData);
 
+client.on("ready", () => InviteManagement.updateInviteUsesForAllGuilds(client));
+
 //todo tidy up this dumb pyramid
 client.on("guildMemberAdd", member => {
     GuildData.findOne({ guildID: member.guild.id })
@@ -17,7 +19,7 @@ client.on("guildMemberAdd", member => {
                             member.addRole(configuredInvite.roleID);
                     }
                 });
-            InviteManagement.updateInviteUsesForGuild(guildData);
+            InviteManagement.updateInviteUsesForGuild(client, guildData);
         });
 });
 

@@ -1,5 +1,5 @@
 const Core = require("../../core");
-const configuredInvite = require("./invite-data.js");
+const InviteData = require("./invite-data.js");
 
 module.exports = class GuildData extends Core.BaseGuildData {
     constructor() {
@@ -10,7 +10,13 @@ module.exports = class GuildData extends Core.BaseGuildData {
 
         this.schema({
             allowedRoles: [String],
-            configuredInvites: [configuredInvite]
+            configuredInvites: [InviteData]
         });
+    }
+
+    configureInvite(inviteID, roleID, uses) {
+        // @ts-ignore
+        const inviteData = InviteData.create({ inviteID: inviteID, roleID: roleID, uses: uses });
+        this.configuredInvites.push(inviteData);
     }
 };

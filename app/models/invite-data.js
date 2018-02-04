@@ -1,6 +1,6 @@
 const Core = require("../../core");
 
-module.exports = class configuredInvite extends Core.BaseEmbeddedData {
+module.exports = class InviteData extends Core.BaseEmbeddedData {
     constructor() {
         super();
 
