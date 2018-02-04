@@ -16,12 +16,12 @@ A good candidate is my [template project](https://github.com/benji7425/discord-b
 ## Contributing
 
 The easiest way to get setup would be a fork of this repo, and the fork of a bot to use as a development context.
-I suggest using my [template project](https://github.com/benji7425/discord-bot-template) as a development context, along with [git subrepo](https://github.com/ingydotnet/git-subrepo) to push back to your discord-bot-core fork.  
-If you are uncomfortable using git subrepo, you could just as easily copy/paste your child `discord-bot-core` directory back into your fork.
+I suggest using my [template project](https://github.com/benji7425/discord-bot-template) as a development context, along with [git subrepo](https://github.com/ingydotnet/git-subrepo) to push back to your core fork.  
+If you are uncomfortable using git subrepo, you could just as easily copy/paste your child `core` directory back into your fork.
 
 My [template project](https://github.com/benji7425/discord-bot-template) has more in-depth details about how to setup and test.
 
-If you have a completed change, please submit a pull request from your `discord-bot-core` fork back to this repo.
+If you have a completed change, please submit a pull request from your `core` fork back to this repo.
 
 Whilst this is very easy to use once you know how, I appreciate this might be a little tricky if you aren't familiar with developing in this way.
 Feel free to contact me if you would like assistance. Find contact details [here](https://benji7425.github.io/contact).

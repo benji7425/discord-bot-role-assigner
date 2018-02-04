@@ -1,4 +1,4 @@
-const Core = require("../../discord-bot-core");
+const Core = require("../../core");
 const Internal = require("../internal.js");
 
 module.exports = new Core.Command({

@@ -2,8 +2,8 @@
   "version": "3.3.1",
   "main": "app/index.js",
   "scripts": {
-    "postinstall": "cd ./discord-bot-core && npm install",
-    "start": "node discord-bot-core/monitor.js app/index.js --name=role-assigner"
+    "postinstall": "cd ./core && npm install",
+    "start": "node app/index.js --name=role-assigner"
   },
   "dependencies": {
     "@types/node": "9.3.0",

@@ -1,0 +1,20 @@
+{
+    "dbConnectionString": "nedb://guilds-data",
+    "neDBCompactionSchedule": "0 0 * * * *",
+    "website": "https://benji7425.github.io",
+    "discordInvite": "https://discord.gg/SSkbwSJ",
+    "debugIgnores": [
+        "[ws] [connection] Sending a heartbeat",
+        "[ws] [connection] Heartbeat acknowledged"
+    ],
+    "disabledEvents": [
+        "CHANNEL_PINS_UPDATE",
+        "GUILD_BAN_ADD",
+        "GUILD_BAN_REMOVE",
+        "PRESENCE_UPDATE",
+        "TYPING_START",
+        "USER_NOTE_UPDATE",
+        "USER_SETTINGS_UPDATE"
+    ],
+    "askTimeout": 60000
+}

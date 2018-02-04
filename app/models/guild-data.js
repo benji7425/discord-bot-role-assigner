@@ -1,5 +1,5 @@
-const Core = require("../../discord-bot-core");
-const DiscordUtil = require("../../discord-bot-core").util;
+const Core = require("../../core");
+const DiscordUtil = require("../../core").util;
 
 module.exports = class GuildData extends Core.BaseGuildData {
 	constructor() {

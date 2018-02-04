@@ -1,4 +1,4 @@
-const Core = require("../../discord-bot-core");
+const Core = require("../../core");
 
 module.exports = new Core.Command({
 	name: "view-roles",
