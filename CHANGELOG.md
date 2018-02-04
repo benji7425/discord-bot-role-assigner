@@ -1,4 +1,19 @@
 # Changelog
+## v3.4.0-b1
+### Added
+- Integrated role-on-join bot
+    - Assign members a configured role when they join based on the invite they used
+    - New commands for invite configuring
+- MongoDB compatibility
+- Reset command to reset data for the server
+- Bot name now displays in version command
+
+### Updated
+- Removed auto-restart script as shouldn't be needed anymore
+
+### Fixed
+- Errors when assigning the role will now actually be reported in Discord, rather than the user just receiving a blank mention
+
 ## v3.3.1
 ### Fixed
 - Fixed loss of data on Discord outage

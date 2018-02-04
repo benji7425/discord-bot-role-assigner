@@ -1,5 +1,5 @@
 {
-  "version": "3.3.1",
+  "version": "3.4.0-b1",
   "main": "app/index.js",
   "scripts": {
     "postinstall": "cd ./core && npm install",
