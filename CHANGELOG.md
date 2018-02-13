@@ -1,11 +1,12 @@
 # Changelog
-## v3.4.0-b1
+## v3.4.0
 ### Added
 - Integrated role-on-join bot
     - Assign members a configured role when they join based on the invite they used
     - New commands for invite configuring
 - MongoDB compatibility
 - Reset command to reset data for the server
+- Stats command to view a few bot statistics
 - Bot name now displays in version command
 
 ### Updated
