@@ -1,0 +1,23 @@
+{
+  "name": "discord-bot-role-assigner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benji7425/discord-bot-role-assigner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benji7425/discord-bot-role-assigner/issues"
+  },
+  "homepage": "https://github.com/benji7425/discord-bot-role-assigner#readme",
+  "dependencies": {
+    "typescript": "^3.1.1"
+  }
+}
