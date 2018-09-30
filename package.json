@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/benji7425/discord-bot-role-assigner#readme",
   "dependencies": {
+    "disharmony": "^0.2.0",
     "typescript": "^3.1.1"
   }
 }
