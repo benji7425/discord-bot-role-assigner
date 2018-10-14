@@ -1,4 +1,5 @@
-import { Client, Message } from "disharmony"
+import { Client } from "disharmony"
+import { Message } from "./models/message";
 
 let client = new Client("My bot", Message)
 

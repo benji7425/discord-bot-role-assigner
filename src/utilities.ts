@@ -1,0 +1,1 @@
+export const normaliseRole = (str: string) => str.toLowerCase().replace(/ +/, "")
