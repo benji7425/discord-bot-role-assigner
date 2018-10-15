@@ -14,4 +14,9 @@ export class Guild extends DGuild
                 return true
         return false
     }
+
+    public hasJoinableRole(roleName: string)
+    {
+        return this.joinableRoles.indexOf(normaliseRole(roleName)) > -1
+    }
 }
