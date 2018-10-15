@@ -5,7 +5,7 @@ import { normaliseRole } from "../utilities";
 export class Guild extends DGuild
 {
     @fromDiscord public readonly roles: Map<string, Role>
-    @serialize public joinableRoles: string[]
+    @serialize public joinableRoles: string[] = []
 
     public hasRole(roleName: string)
     {
@@ -18,5 +18,10 @@ export class Guild extends DGuild
     public hasJoinableRole(roleName: string)
     {
         return this.joinableRoles.indexOf(normaliseRole(roleName)) > -1
+    }
+
+    constructor() {
+        super();
+        this.joinableRoles = []        
     }
 }

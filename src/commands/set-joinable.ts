@@ -18,7 +18,7 @@ function invoke(params: string[], message: Message, client: DisharmonyClient)
     else
         message.guild.joinableRoles = message.guild.joinableRoles.filter(x => x !== normalised)
         
-    return Promise.resolve(`Role ${name} is now ${!joinable ? "no longer" : ""} joinable`)
+    return Promise.resolve(`Role ${name} is now ${!joinable ? "no longer " : ""}joinable`)
 }
 
 module.exports = new Command(
