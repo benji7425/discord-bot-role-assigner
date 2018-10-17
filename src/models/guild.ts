@@ -20,8 +20,16 @@ export class Guild extends DGuild
         return this.joinableRoles.indexOf(normaliseRole(roleName)) > -1
     }
 
-    constructor() {
+    public getRoleSnowflake(name: string)
+    {
+        for (let role of this.roles)
+            if (role[1].name === name)
+                return role[0]
+    }
+
+    constructor()
+    {
         super();
-        this.joinableRoles = []        
+        this.joinableRoles = []
     }
 }
