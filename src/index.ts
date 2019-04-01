@@ -1,6 +1,6 @@
 import { Client } from "disharmony"
-import { Message } from "./models/message"
+import { Message } from "./models/message";
 
-let client = new Client("My bot", Message, require("./commands"))
+let client = new Client("Role Assigner", require("./commands"), Message)
 
 client.initialize(require("fs").readFileSync("./token", "utf8"))

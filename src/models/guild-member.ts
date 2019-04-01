@@ -1,12 +1,11 @@
-import { GuildMember as DGuildMember, fromDiscord } from "disharmony"
-import { Role } from "discord.js";
-import { normaliseRole } from "../utilities";
+import { BotGuildMember } from "disharmony"
+import { normaliseRole } from "../utilities"
 
-export class GuildMember extends DGuildMember
+export class GuildMember extends BotGuildMember
 {
-    @fromDiscord public readonly roles: Map<string, Role>
-    @fromDiscord public addRole: (snowflake: string) => Promise<object>
-    @fromDiscord public removeRole: (snowflake: string) => Promise<object>
+    get roles() { return this.djsGuildMember.roles }
+    addRole(snowflake: string) { this.djsGuildMember.addRole(snowflake) }
+    removeRole(snowflake: string) { this.djsGuildMember.removeRole(snowflake) }
 
     public hasRole(roleName: string)
     {

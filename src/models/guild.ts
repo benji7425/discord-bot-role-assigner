@@ -1,11 +1,17 @@
-import { Guild as DGuild, fromDiscord, serialize } from "disharmony"
-import { Role } from "discord.js"
+import { BotGuild } from "disharmony"
 import { normaliseRole } from "../utilities";
+import { Role, Collection } from "discord.js";
 
-export class Guild extends DGuild
+export class Guild extends BotGuild
 {
-    @fromDiscord public readonly roles: Map<string, Role>
-    @serialize public joinableRoles: string[] = []
+    get roles(): Collection<string, Role> { return this.djsGuild.roles }
+    get joinableRoles(): string[]
+    {
+        if (!this.record.joinableRoles)
+            this.record.joinableRoles = []
+        return this.record.joinableRoles
+    }
+    set joinableRoles(value: string[]) { this.record.joinableRoles = value }
 
     public hasRole(roleName: string)
     {
@@ -25,11 +31,5 @@ export class Guild extends DGuild
         for (let role of this.roles)
             if (role[1].name === name)
                 return role[0]
-    }
-
-    constructor()
-    {
-        super();
-        this.joinableRoles = []
     }
 }

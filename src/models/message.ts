@@ -1,9 +1,17 @@
-import { Message as DMessage, fromDiscord } from "disharmony"
+import { Message as BotMessage } from "disharmony"
 import { Guild } from "./guild";
-import { GuildMember } from "./GuildMember";
+import { GuildMember } from "./guild-member";
+import { Message as DjsMessage } from "discord.js"
 
-export class Message extends DMessage
+export class Message extends BotMessage
 {
-    @fromDiscord public readonly guild: Guild
-    @fromDiscord public readonly member: GuildMember
+    readonly guild: Guild
+    readonly member: GuildMember
+
+    constructor(djsMessage: DjsMessage)
+    {
+        super(djsMessage)
+        this.guild = new Guild(djsMessage.guild)
+        this.member = new GuildMember(djsMessage.member)
+    }
 }

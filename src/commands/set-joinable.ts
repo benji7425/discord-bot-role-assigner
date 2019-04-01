@@ -1,9 +1,8 @@
 import { Message } from "../models/message";
-import { DisharmonyClient } from "disharmony";
 import Command, { PermissionLevel } from "disharmony/lib/commands/command";
 import { normaliseRole } from "../utilities";
 
-function invoke(params: string[], message: Message, client: DisharmonyClient)
+function invoke(params: string[], message: Message)
 {
     const name = params[0], normalised = normaliseRole(params[0]), joinable = params[1].toLowerCase() !== "false"
 

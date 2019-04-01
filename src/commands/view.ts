@@ -1,14 +1,13 @@
-import { Message } from "../models/message";
-import { DisharmonyClient } from "disharmony";
 import Command, { PermissionLevel } from "disharmony/lib/commands/command";
+import { Message } from "../models/message";
 
-async function invoke(params: string[], message: Message, client: DisharmonyClient)
+async function invoke(params: string[], message: Message)
 {
     const responseStr =
         message.guild.joinableRoles.length === 0 ?
             "No roles configured!" :
             `\n• ${message.guild.joinableRoles.join("\n•")}`
-    
+
     return Promise.resolve(responseStr)
 }
 
