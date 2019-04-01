@@ -19,7 +19,7 @@
   "homepage": "https://github.com/benji7425/discord-bot-role-assigner#readme",
   "dependencies": {
     "@types/node": "^10.11.3",
-    "disharmony": "^0.3.0",
+    "disharmony": "file:../disharmony",
     "typescript": "^3.1.1"
   }
 }
