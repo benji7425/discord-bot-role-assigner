@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/benji7425/discord-bot-role-assigner#readme",
   "dependencies": {
-    "@types/node": "^10.11.3",
-    "disharmony": "file:../disharmony",
+    "disharmony": "^0.4.1",
     "typescript": "^3.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.14.4"
   }
 }
