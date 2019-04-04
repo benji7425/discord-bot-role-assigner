@@ -1,27 +1,36 @@
 {
-  "name": "discord-bot-role-assigner",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/benji7425/discord-bot-role-assigner.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Benji7425 <benji7425@pm.me> (http://benji7425.github.io/)",
   "bugs": {
     "url": "https://github.com/benji7425/discord-bot-role-assigner/issues"
   },
-  "homepage": "https://github.com/benji7425/discord-bot-role-assigner#readme",
   "dependencies": {
     "disharmony": "^0.4.1",
     "typescript": "^3.1.1"
   },
+  "description": "Discord bot to allow users to join and leave configured roles",
   "devDependencies": {
     "@types/node": "^10.14.4"
-  }
+  },
+  "files": [
+    "/lib",
+    "!*.map",
+    "!*.spec.*"
+  ],
+  "homepage": "https://github.com/benji7425/discord-bot-role-assigner#readme",
+  "keywords": [],
+  "license": "ISC",
+  "main": "lib/index.js",
+  "name": "discord-role-assigner",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benji7425/discord-bot-role-assigner.git"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "build-debug": "./node_modules/.bin/tsc --sourceMap",
+    "test": "./node_modules/.bin/ts-node ./test-runner.ts",
+    "start": "node lib/index.js --name role-assigner"
+  },
+  "types": "lib/index.d.ts",
+  "version": "4.0.0-a1"
 }
