@@ -63,10 +63,5 @@ I am available for contact via my [support Discord server](https://discordapp.co
 ## Versioning
 [SemVer](http://semver.org/) is used for versioning; view available versions on the [tags page](https://github.com/your/project/tags)
 
-## Authors
-- [**Benji7425**](https://github.com/benji7425) - *Developer*
-
-You can also view the [contributors](https://github.com/your/project/contributors)
-
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
