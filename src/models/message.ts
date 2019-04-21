@@ -1,4 +1,4 @@
-import { Message as BotMessage } from "disharmony"
+import { BotMessage } from "disharmony"
 import { Guild } from "./guild";
 import { GuildMember } from "./guild-member";
 import { Message as DjsMessage } from "discord.js"

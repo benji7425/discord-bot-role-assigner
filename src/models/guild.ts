@@ -4,7 +4,7 @@ import { Role, Collection } from "discord.js";
 
 export class Guild extends BotGuild
 {
-    get roles(): Collection<string, Role> { return this.djsGuild.roles }
+    get roles(): Collection<string, Role> { return this.djs.roles }
     get joinableRoles(): string[]
     {
         if (!this.record.joinableRoles)

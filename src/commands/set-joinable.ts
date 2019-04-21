@@ -1,5 +1,5 @@
 import { Message } from "../models/message";
-import Command, { PermissionLevel } from "disharmony/lib/commands/command";
+import { PermissionLevel, Command } from "disharmony";
 import { normaliseRole } from "../utilities";
 
 function invoke(params: string[], message: Message)

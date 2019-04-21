@@ -4,7 +4,7 @@
     "url": "https://github.com/benji7425/discord-role-assigner/issues"
   },
   "dependencies": {
-    "disharmony": "^0.4.1"
+    "disharmony": "^0.6.2"
   },
   "description": "Discord bot to allow users to join and leave configured roles",
   "devDependencies": {

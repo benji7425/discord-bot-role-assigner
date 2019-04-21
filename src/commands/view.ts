@@ -1,4 +1,4 @@
-import Command, { PermissionLevel } from "disharmony/lib/commands/command";
+import { PermissionLevel, Command } from "disharmony";
 import { Message } from "../models/message";
 
 async function invoke(params: string[], message: Message)

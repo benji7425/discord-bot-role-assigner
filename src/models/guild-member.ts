@@ -3,9 +3,7 @@ import { normaliseRole } from "../utilities"
 
 export class GuildMember extends BotGuildMember
 {
-    get roles() { return this.djsGuildMember.roles }
-    addRole(snowflake: string) { this.djsGuildMember.addRole(snowflake) }
-    removeRole(snowflake: string) { this.djsGuildMember.removeRole(snowflake) }
+    get roles() { return this.djs.roles }
 
     public hasRole(roleName: string)
     {
