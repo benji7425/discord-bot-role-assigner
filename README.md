@@ -1,9 +1,13 @@
 # Discord Role Assigner
+<!--summary-->
 A simple bot to allow users to join and leave configured roles
+<!--/summary-->
 
 ## Features
+<!--features-->
 - Toggle permissions for a role on and off
 - Simple command allows user to join and leave permitted roles
+<!--/features-->
 
 ## Use cases
 - You want certain roles to be opt-in, but don't want to have to manually assign users  
