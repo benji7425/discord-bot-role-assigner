@@ -1,10 +1,12 @@
 import { BotGuild } from "disharmony"
 import { normaliseRole } from "../utilities";
 import { Role, Collection } from "discord.js";
+import Invite from "./invite";
 
 export class Guild extends BotGuild
 {
     get roles(): Collection<string, Role> { return this.djs.roles }
+
     get joinableRoles(): string[]
     {
         if (!this.record.joinableRoles)
@@ -12,6 +14,14 @@ export class Guild extends BotGuild
         return this.record.joinableRoles
     }
     set joinableRoles(value: string[]) { this.record.joinableRoles = value }
+
+    get configuredInvites(): Invite[]
+    {
+        if (!this.record.invites)
+            this.record.invites = []
+        return this.record.invites
+    }
+    set configuredInvites(value: Invite[]) { this.record.invites = value }
 
     public hasRole(roleName: string)
     {
