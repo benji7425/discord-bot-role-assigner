@@ -1,19 +1,19 @@
 {
     "compilerOptions": {
         "declaration": true,
-        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "module": "commonjs",
         "moduleResolution": "node",
-        "outDir": "lib",
+        "outDir": "dist",
         "rootDir": "src",
+        "sourceMap": true,
         "strict": true,
         "strictPropertyInitialization": false,
-        "target": "es6",
-        "sourceMap": true
+        "target": "es2018",
+        "typeRoots": ["node_modules/@types", "src/types"]
     },
     "exclude": [
-        "./lib/**/*",
+        "./dist/**/*",
         "./test-runner.ts"
     ]
 }

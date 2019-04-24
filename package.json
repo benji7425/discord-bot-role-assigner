@@ -12,13 +12,13 @@
     "typescript": "^3.1.1"
   },
   "files": [
-    "/lib",
+    "/dist",
     "!*.map",
     "!*.spec.*"
   ],
   "homepage": "https://github.com/benji7425/discord-role-assigner#readme",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "name": "discord-role-assigner",
   "repository": {
     "type": "git",
@@ -26,10 +26,8 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/tsc",
-    "build-debug": "./node_modules/.bin/tsc --sourceMap",
-    "test": "./node_modules/.bin/ts-node ./test-runner.ts",
-    "start": "node lib/index.js --name role-assigner"
+    "start": "node dist/index.js --name role-assigner"
   },
-  "types": "lib/index.d.ts",
+  "types": "dist/index.d.ts",
   "version": "4.0.0-a1"
 }
