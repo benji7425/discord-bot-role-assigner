@@ -26,21 +26,6 @@
                 "reveal": "silent",
                 "focus": false
             }
-        },
-        {
-            "label": "test",
-            "type": "shell",
-            "command": "./node_modules/.bin/ts-node test-runner.ts",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
-            "presentation": {
-                "reveal": "silent",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": false
-            }
         }
     ]
 }
