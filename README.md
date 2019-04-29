@@ -1,6 +1,6 @@
 # Discord Role Assigner
 <!--summary-->
-A simple bot to allow users to join and leave configured roles
+A simple Discord bot to allow users to join and leave configured roles
 <!--/summary-->
 
 ## Features
@@ -24,14 +24,16 @@ A simple bot to allow users to join and leave configured roles
 - If you agree, use my [public invite]() (coming soon!) to invite the bot to your server
 
 ### Setup
+Use `@RSS Poster help` to view available commands
+
 **Admin only**  
-These commands require administrator permission in the Discord server
-- `@Role Assigner set-joinable rolename true/false` to set or unset a role as joinable
+These command requires administrator permission in the Discord server
+- `@Role Assigner set-joinable <rolename> <true/false>` to set or unset a role as joinable
 
 ### Usage
 These commands can be run by any user in the Discord server
-- `@Role Assigner joinrole rolename` to join a role
-- `@Role Assigner leaverole rolename` to leave a role
+- `@Role Assigner joinrole <rolename>` to join a role
+- `@Role Assigner leaverole <rolename>` to leave a role
 
 ### Permissions
 The bot requires certain permissions, which you are prompted for on the invite screen.
@@ -46,12 +48,12 @@ Each permission has a reason for being required, explained below.
 | Manage server  | Read server invites for role assigning when user joins with invite  |
 
 ## Self hosting
-1. Clone the repository, or download and extract the zip file (preferrably from the release page)
-2. Make sure you have *npm* and *git* installed
-3. Run `npm install`
-4. Run `npm run build`
-5. Add a file named *token* in the root folder with your token string in
-6. Run `npm start`
+1. Install [Node.js v10](https://nodejs.org/en/) and 
+2. Clone the repository, or download and extract the zip file (preferrably from the [release page](https://github.com/benji7425/discord-role-assigner/releases))
+3. Add a file named *token* in the root folder; paste in your bot token
+3. Run `npm install` to install dependencies
+4. Run `npm run build` to generate output javascript
+6. Run `npm start` to start the bot
 
 **Note for git users**  
 If you cloned the repository with git, make sure you `git reset --hard vX.Y` to a specific version, as latest master isn't always production ready!
@@ -61,6 +63,7 @@ If you cloned the repository with git, make sure you `git reset --hard vX.Y` to 
 I am available for contact via my [support Discord server](https://discordapp.com/invite/SSkbwSJ). I will always do my best to respond, however I am often busy so can't always be available right away, and as this is a free service I may not always be able to resolve your query.
 
 ## Built With
+- [Node.js](https://nodejs.org/en/) - *Runtime*
 - [discord.js](https://github.com/discordjs/discord.js) - *Discord library*
 - [disharmony](https://github.com/benji7425/disharmony) - *Bot framework*
 
