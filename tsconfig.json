@@ -4,16 +4,16 @@
         "experimentalDecorators": true,
         "module": "commonjs",
         "moduleResolution": "node",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
         "outDir": "dist",
         "rootDir": "src",
         "sourceMap": true,
         "strict": true,
         "strictPropertyInitialization": false,
-        "target": "es2018",
-        "typeRoots": ["node_modules/@types", "src/types"]
+        "target": "es2018"
     },
-    "exclude": [
-        "./dist/**/*",
-        "./test-runner.ts"
+    "include": [
+        "./src/**/*.ts"
     ]
 }

@@ -1,15 +1,23 @@
-import { Client } from "disharmony"
-import { Message } from "./models/message";
-import { GuildMember as DjsGuildMember } from "discord.js";
-import { Guild } from "./models/guild";
-import { updateInviteUsesForGuild, updateInviteUsesForAllGuilds } from "./core/invite-manager";
+import { GuildMember as DjsGuildMember } from "discord.js"
+import { Client, loadConfig, Logger } from "disharmony"
+import commands from "./commands"
+import { updateInviteUsesForAllGuilds, updateInviteUsesForGuild } from "./core/invite-manager"
+import { Guild } from "./models/guild"
+import { GuildMember } from "./models/guild-member"
+import { Message } from "./models/message"
 
-let client = new Client("Role Assigner", require("./commands"), Message)
+const { config } = loadConfig()
+
+const client = new Client(commands, config!, Message, GuildMember)
 
 client.onReady.sub(() => updateInviteUsesForAllGuilds(client))
 client.djs.on("guildMemberAdd", onGuildMemberAdd)
 
-client.initialize(require("fs").readFileSync("./token", "utf8"))
+client.login(config.token).catch(async err =>
+{
+    await Logger.consoleLogError("Error during initialisation", err)
+    process.exit(1)
+})
 
 async function onGuildMemberAdd(djsGuildMember: DjsGuildMember)
 {
@@ -18,11 +26,11 @@ async function onGuildMemberAdd(djsGuildMember: DjsGuildMember)
 
     const invites = await guild.djs.fetchInvites()
 
-    for (let configuredInvite of guild.configuredInvites)
+    for (const configuredInvite of guild.configuredInvites)
     {
         const invite = invites.get(configuredInvite.inviteId)
         if (invite && (invite.uses - configuredInvite.uses === 1))
-            djsGuildMember.addRole(configuredInvite.roleId)
+            await djsGuildMember.addRole(configuredInvite.roleId)
     }
     await updateInviteUsesForGuild(guild)
     await guild.save()

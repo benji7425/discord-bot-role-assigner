@@ -1,7 +1,7 @@
-import { PermissionLevel, Command } from "disharmony";
-import { Message } from "../models/message";
+import { Command, PermissionLevel } from "disharmony"
+import { Message } from "../models/message"
 
-async function invoke(params: string[], message: Message)
+async function invoke(_: string[], message: Message)
 {
     const responseStr =
         message.guild.joinableRoles.length === 0 ?
@@ -11,10 +11,9 @@ async function invoke(params: string[], message: Message)
     return Promise.resolve(responseStr)
 }
 
-module.exports = new Command(
-    /*name*/            "view-roles",
-    /*description*/     "View joinable roles",
+export default new Command(
     /*syntax*/          "view-roles",
+    /*description*/     "View joinable roles",
     /*permissionLevel*/ PermissionLevel.Anyone,
-    /*invoke*/          invoke
+    /*invoke*/          invoke,
 )

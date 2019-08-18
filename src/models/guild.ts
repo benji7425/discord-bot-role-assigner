@@ -1,7 +1,7 @@
+import { Collection, Role } from "discord.js"
 import { BotGuild } from "disharmony"
-import { normaliseRole } from "../utilities";
-import { Role, Collection } from "discord.js";
-import Invite from "./invite";
+import { normaliseRole } from "../utilities"
+import Invite from "./invite"
 
 export class Guild extends BotGuild
 {
@@ -25,7 +25,7 @@ export class Guild extends BotGuild
 
     public hasRole(roleName: string)
     {
-        for (let role of this.roles.values())
+        for (const role of this.roles.values())
             if (normaliseRole(role.name) === normaliseRole(roleName))
                 return true
         return false
@@ -38,7 +38,7 @@ export class Guild extends BotGuild
 
     public getRoleSnowflake(name: string)
     {
-        for (let role of this.roles)
+        for (const role of this.roles)
             if (role[1].name === name)
                 return role[0]
     }

@@ -4,12 +4,13 @@
     "url": "https://github.com/benji7425/discord-role-assigner/issues"
   },
   "dependencies": {
-    "disharmony": "^0.6.3"
+    "@types/node": "^10.14.15",
+    "disharmony": "^1.1.0",
+    "typescript": "^3.1.1"
   },
   "description": "Discord bot to allow users to join and leave configured roles",
   "devDependencies": {
-    "@types/node": "^10.14.4",
-    "typescript": "^3.1.1"
+    "tslint": "^5.18.0"
   },
   "files": [
     "/dist",
@@ -25,8 +26,12 @@
     "url": "git+https://github.com/benji7425/discord-role-assigner.git"
   },
   "scripts": {
-    "build": "./node_modules/.bin/tsc",
-    "start": "node dist/index.js --name role-assigner"
+    "build": "./node_modules/.bin/tsc --project tsconfig.prod.json",
+    "build-test": "./node_modules/.bin/tsc --project tsconfig.json && npm test",
+    "full-start": "npm ci && npm run build && npm start",
+    "lint": "./node_modules/.bin/tslint --project .",
+    "start": "node ./dist/index.js --name activity-monitor",
+    "test": "node --stack-trace-limit=1 ./test-runner.js"
   },
   "types": "dist/index.d.ts",
   "version": "4.0.0-a1"

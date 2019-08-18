@@ -1,6 +1,6 @@
-import { Message } from "../models/message";
-import { PermissionLevel, Command } from "disharmony";
-import { normaliseRole } from "../utilities";
+import { Command, PermissionLevel } from "disharmony"
+import { Message } from "../models/message"
+import { normaliseRole } from "../utilities"
 
 function invoke(params: string[], message: Message)
 {
@@ -16,14 +16,13 @@ function invoke(params: string[], message: Message)
         message.guild.joinableRoles.push(normalised)
     else
         message.guild.joinableRoles = message.guild.joinableRoles.filter(x => x !== normalised)
-        
+
     return Promise.resolve(`Role ${name} is now ${!joinable ? "no longer " : ""}joinable`)
 }
 
-module.exports = new Command(
-    /*name*/            "set-joinable",
-    /*description*/     "Set a role as joinable and leavable",
+export default new Command(
     /*syntax*/          "set-joinable <rolename> [true/false]",
+    /*description*/     "Set a role as joinable and leavable",
     /*permissionLevel*/ PermissionLevel.Admin,
-    /*invoke*/          invoke
+    /*invoke*/          invoke,
 )

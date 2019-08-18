@@ -1,10 +1,10 @@
-import { IClient } from "disharmony";
-import { Guild } from "../models/guild";
+import { IClient, Logger } from "disharmony"
+import { Guild } from "../models/guild"
 
 async function updateInviteUsesForGuild(guild: Guild)
 {
     const invites = await guild.djs.fetchInvites()
-    for (let configuredInvite of guild.configuredInvites)
+    for (const configuredInvite of guild.configuredInvites)
     {
         const invite = invites.get(configuredInvite.inviteId)
         if (invite)
@@ -14,7 +14,7 @@ async function updateInviteUsesForGuild(guild: Guild)
 
 async function updateInviteUsesForAllGuilds(client: IClient)
 {
-    for (let djsGuild of client.djs.guilds.values())
+    for (const djsGuild of client.djs.guilds.values())
     {
         try
         {
@@ -23,11 +23,17 @@ async function updateInviteUsesForAllGuilds(client: IClient)
             await updateInviteUsesForGuild(guild)
             await guild.save()
         }
-        catch { } //probably guild.loadDocument failed if the guild hasn't configured anything
+        catch
+        {
+            // TODO Add some proper error handling or something
+            // Probably guild.loadDocument failed if the guild hasn't configured anything
+            Logger.debugLog("Failed to update invite users for some guild")
+        }
     }
 }
 
-export {
+export
+{
     updateInviteUsesForGuild,
-    updateInviteUsesForAllGuilds
+    updateInviteUsesForAllGuilds,
 }

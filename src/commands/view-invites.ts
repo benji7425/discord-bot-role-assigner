@@ -1,7 +1,7 @@
-import { Message } from "../models/message";
-import { PermissionLevel, Command } from "disharmony";
+import { Command, PermissionLevel } from "disharmony"
+import { Message } from "../models/message"
 
-async function invoke(params: string[], message: Message)
+async function invoke(_: string[], message: Message)
 {
     if (message.guild.configuredInvites.length === 0)
         return "No invites configured!"
@@ -10,10 +10,9 @@ async function invoke(params: string[], message: Message)
             .join("\n")
 }
 
-module.exports = new Command(
-    /*name*/            "view-invites",
-    /*description*/     "View list of configured invites and their roles",
+export default new Command(
     /*syntax*/          "view-invites",
+    /*description*/     "View list of configured invites and their roles",
     /*permissionLevel*/ PermissionLevel.Admin,
-    /*invoke*/          invoke
+    /*invoke*/          invoke,
 )

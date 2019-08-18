@@ -1,4 +1,4 @@
-import { Message } from "../models/message";
+import { Message } from "../models/message"
 
 export default async function assign(name: string, message: Message, isJoining: boolean)
 {

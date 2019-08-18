@@ -1,6 +1,6 @@
-import { Message } from "../models/message";
-import { PermissionLevel, Command } from "disharmony";
-import Invite from "../models/invite";
+import { Command, PermissionLevel } from "disharmony"
+import Invite from "../models/invite"
+import { Message } from "../models/message"
 
 async function invoke(params: string[], message: Message)
 {
@@ -9,7 +9,7 @@ async function invoke(params: string[], message: Message)
     const invite = invites.get(inviteId)
 
     if (!invite)
-        throw `Invite with id '${inviteId}' not found`
+        throw new Error(`Invite with id '${inviteId}' not found`)
 
     const role = message.mentions.roles.first()
     if (role)
@@ -20,15 +20,14 @@ async function invoke(params: string[], message: Message)
         message.guild.configuredInvites.splice(idx, 1)
     }
     else
-        throw "Please either @mention a role, or use 'remove' as the last parameter to remove this configured invite"
+        throw new Error("Please either @mention a role, or use 'remove' as the last parameter to remove this configured invite")
 
     return "Success!"
 }
 
-module.exports = new Command(
-    /*name*/            "configure-invite",
-    /*description*/     "Configure an invite to assign a role when used, or remove a configured invite",
+export default new Command(
     /*syntax*/          "configure-invite <invite-id> <@role|remove>",
+    /*description*/     "Configure an invite to assign a role when used, or remove a configured invite",
     /*permissionLevel*/ PermissionLevel.Admin,
-    /*invoke*/          invoke
+    /*invoke*/          invoke,
 )

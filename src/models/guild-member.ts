@@ -7,7 +7,7 @@ export class GuildMember extends BotGuildMember
 
     public hasRole(roleName: string)
     {
-        for (let role of this.roles.values())
+        for (const role of this.roles.values())
             if (normaliseRole(role.name) === normaliseRole(roleName))
                 return true
         return false

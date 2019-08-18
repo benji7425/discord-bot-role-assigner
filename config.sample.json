@@ -1,0 +1,10 @@
+{
+    "token": "",
+    "dbConnectionString": "nedb://nedb-data",
+    "serviceName": "Role Assigner",
+    "requiredPermissions": 268454944,
+    "askTimeoutMs": 30000,
+    "dbClientConfig": {
+        "compactionWriteCount": 100
+    }
+}

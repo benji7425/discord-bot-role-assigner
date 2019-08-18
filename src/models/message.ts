@@ -1,12 +1,12 @@
-import { BotMessage } from "disharmony"
-import { Guild } from "./guild";
-import { GuildMember } from "./guild-member";
 import { Message as DjsMessage } from "discord.js"
+import { BotMessage } from "disharmony"
+import { Guild } from "./guild"
+import { GuildMember } from "./guild-member"
 
 export class Message extends BotMessage
 {
-    readonly guild: Guild
-    readonly member: GuildMember
+    public readonly guild: Guild
+    public readonly member: GuildMember
 
     constructor(djsMessage: DjsMessage)
     {
