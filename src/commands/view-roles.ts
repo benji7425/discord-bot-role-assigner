@@ -1,12 +1,14 @@
-import { Command, PermissionLevel } from "disharmony"
-import { Message } from "../models/message"
+import { BotMessage, Command, PermissionLevel } from "disharmony"
+import { Guild } from "../models/guild"
 
-async function invoke(_: string[], message: Message)
+async function invoke(_: string[], message: BotMessage)
 {
+    const guild = new Guild(message.guild.djs)
+
     const responseStr =
-        message.guild.joinableRoles.length === 0 ?
+        guild.joinableRoles.length === 0 ?
             "No roles configured!" :
-            `\n• ${message.guild.joinableRoles.join("\n•")}`
+            `\n• ${guild.joinableRoles.join("\n•")}`
 
     return Promise.resolve(responseStr)
 }

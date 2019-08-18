@@ -1,9 +1,11 @@
-import { Command, PermissionLevel } from "disharmony"
+import { BotMessage, Command, PermissionLevel } from "disharmony"
+import { Guild } from "../models/guild"
 import Invite from "../models/invite"
-import { Message } from "../models/message"
 
-async function invoke(params: string[], message: Message)
+async function invoke(params: string[], message: BotMessage)
 {
+    const guild = new Guild(message.guild.djs)
+
     const inviteId = params[0]
     const invites = await message.guild.djs.fetchInvites()
     const invite = invites.get(inviteId)
@@ -13,11 +15,11 @@ async function invoke(params: string[], message: Message)
 
     const role = message.mentions.roles.first()
     if (role)
-        message.guild.configuredInvites.push(new Invite(inviteId, role.id, invite.uses))
+        guild.configuredInvites.push(new Invite(inviteId, role.id, invite.uses))
     else if (params[1].toLowerCase() === "remove")
     {
-        const idx = message.guild.configuredInvites.findIndex(x => x.inviteId === inviteId)
-        message.guild.configuredInvites.splice(idx, 1)
+        const idx = guild.configuredInvites.findIndex(x => x.inviteId === inviteId)
+        guild.configuredInvites.splice(idx, 1)
     }
     else
         throw new Error("Please either @mention a role, or use 'remove' as the last parameter to remove this configured invite")

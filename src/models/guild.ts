@@ -7,21 +7,8 @@ export class Guild extends BotGuild
 {
     get roles(): Collection<string, Role> { return this.djs.roles }
 
-    get joinableRoles(): string[]
-    {
-        if (!this.record.joinableRoles)
-            this.record.joinableRoles = []
-        return this.record.joinableRoles
-    }
-    set joinableRoles(value: string[]) { this.record.joinableRoles = value }
-
-    get configuredInvites(): Invite[]
-    {
-        if (!this.record.invites)
-            this.record.invites = []
-        return this.record.invites
-    }
-    set configuredInvites(value: Invite[]) { this.record.invites = value }
+    public joinableRoles: string[]
+    public configuredInvites: Invite[]
 
     public hasRole(roleName: string)
     {
@@ -41,5 +28,20 @@ export class Guild extends BotGuild
         for (const role of this.roles)
             if (role[1].name === name)
                 return role[0]
+        return null
+    }
+
+    public loadRecord(record: any)
+    {
+        this.joinableRoles = record.joinableRoles || []
+        this.configuredInvites = record.configuredInvites || []
+        super.loadRecord(record)
+    }
+
+    public toRecord()
+    {
+        this.record.joinableRoles = this.joinableRoles
+        this.record.configuredInvites = this.configuredInvites
+        return super.toRecord()
     }
 }

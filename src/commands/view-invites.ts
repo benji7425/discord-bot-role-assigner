@@ -1,11 +1,13 @@
-import { Command, PermissionLevel } from "disharmony"
-import { Message } from "../models/message"
+import { BotMessage, Command, PermissionLevel } from "disharmony"
+import { Guild } from "../models/guild"
 
-async function invoke(_: string[], message: Message)
+async function invoke(_: string[], message: BotMessage)
 {
-    if (message.guild.configuredInvites.length === 0)
+    const guild = new Guild(message.guild.djs)
+
+    if (guild.configuredInvites.length === 0)
         return "No invites configured!"
-    return message.guild.configuredInvites.map(x =>
+    return guild.configuredInvites.map(x =>
         `\`\`\`\n${JSON.stringify(x)}\`\`\``)
             .join("\n")
 }

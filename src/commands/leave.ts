@@ -1,8 +1,7 @@
-import { Command, PermissionLevel } from "disharmony"
+import { BotMessage, Command, PermissionLevel } from "disharmony"
 import assign from "../core/assign-role"
-import { Message } from "../models/message"
 
-async function invoke(params: string[], message: Message)
+async function invoke(params: string[], message: BotMessage)
 {
     return assign(params[0], message, false)
 }
