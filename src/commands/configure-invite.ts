@@ -1,4 +1,4 @@
-import { BotMessage, Command, PermissionLevel } from "disharmony"
+import { BotMessage, Command, CommandRejection, PermissionLevel } from "disharmony"
 import { Guild } from "../models/guild"
 import Invite from "../models/invite"
 
@@ -11,7 +11,7 @@ async function invoke(params: string[], message: BotMessage)
     const invite = invites.get(inviteId)
 
     if (!invite)
-        throw new Error(`Invite with id '${inviteId}' not found`)
+        throw new CommandRejection(`Invite with id '${inviteId}' not found`)
 
     const role = message.mentions.roles.first()
     if (role)
@@ -22,7 +22,7 @@ async function invoke(params: string[], message: BotMessage)
         guild.configuredInvites.splice(idx, 1)
     }
     else
-        throw new Error("Please either @mention a role, or use 'remove' as the last parameter to remove this configured invite")
+        throw new CommandRejection("Please either @mention a role, or use 'remove' as the last parameter to remove this configured invite")
 
     return "Success!"
 }
