@@ -1,12 +1,13 @@
 import { GuildMember as DjsGuildMember } from "discord.js"
-import { BotMessage, Client, loadConfig, Logger } from "disharmony"
+import { Client, loadConfig, Logger } from "disharmony"
 import commands from "./commands"
 import { updateInviteUsesForAllGuilds, updateInviteUsesForGuild } from "./core/invite-manager"
 import { Guild } from "./models/guild"
+import { Message } from "./models/message"
 
 const { config } = loadConfig()
 
-const client = new Client(commands, config!, BotMessage)
+const client = new Client(commands, config!, Message)
 
 client.onReady.sub(() => updateInviteUsesForAllGuilds(client))
 client.djs.on("guildMemberAdd", onGuildMemberAdd)

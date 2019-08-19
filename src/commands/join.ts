@@ -1,18 +1,17 @@
-import { BotMessage, Command, CommandRejection, PermissionLevel } from "disharmony"
-import { Guild } from "../models/guild"
+import { Command, CommandRejection, PermissionLevel } from "disharmony"
+import { Message } from "../models/message"
 
-async function invoke(params: string[], message: BotMessage)
+async function invoke(params: string[], message: Message)
 {
-    const guild = new Guild(message.guild.djs)
     const roleName = params[0]
 
     if (message.member.hasRole(roleName))
         throw new CommandRejection("You already have that role!")
 
-    if (!guild.hasJoinableRole(roleName))
+    if (!message.guild.hasJoinableRole(roleName))
         throw new CommandRejection("You are not permitted to join/leave that role")
 
-    const roleSnowflake = guild.getRoleSnowflake(name)
+    const roleSnowflake = message.guild.getRoleSnowflake(name)
 
     if (!roleSnowflake)
         throw new CommandRejection("Unable to find that role in this guild")

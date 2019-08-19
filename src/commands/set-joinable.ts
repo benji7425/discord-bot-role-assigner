@@ -1,23 +1,21 @@
-import { BotMessage, Command, CommandRejection, PermissionLevel } from "disharmony"
-import { Guild } from "../models/guild"
+import { Command, CommandRejection, PermissionLevel } from "disharmony"
+import { Message } from "../models/message"
 import { normaliseRole } from "../utilities"
 
-async function invoke(params: string[], message: BotMessage)
+async function invoke(params: string[], message: Message)
 {
     const name = params[0], normalised = normaliseRole(params[0]), joinable = params[1].toLowerCase() !== "false"
 
-    const guild = new Guild(message.guild.djs)
+    if (!message.guild.hasRole(normalised))
+        throw new CommandRejection(`Unable to find role ${name} in guild ${message.guild.name}`)
 
-    if (!guild.hasRole(normalised))
-        throw new CommandRejection(`Unable to find role ${name} in guild ${guild.name}`)
-
-    if (joinable && guild.joinableRoles.find(x => x === normalised))
+    if (joinable && message.guild.joinableRoles.find(x => x === normalised))
         throw new CommandRejection(`Role ${name} already joinable`)
 
     if (joinable)
-        guild.joinableRoles.push(normalised)
+        message.guild.joinableRoles.push(normalised)
     else
-        guild.joinableRoles = guild.joinableRoles.filter(x => x !== normalised)
+        message.guild.joinableRoles = message.guild.joinableRoles.filter(x => x !== normalised)
 
     return `Role ${name} is now ${!joinable ? "no longer " : ""}joinable`
 }
