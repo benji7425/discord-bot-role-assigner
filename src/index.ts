@@ -23,14 +23,22 @@ async function onGuildMemberAdd(djsGuildMember: DjsGuildMember)
     const guild = new Guild(djsGuildMember.guild)
     await guild.loadDocument()
 
-    const invites = await guild.djs.fetchInvites()
-
-    for (const configuredInvite of guild.configuredInvites)
+    try
     {
-        const invite = invites.get(configuredInvite.inviteId)
-        if (invite && (invite.uses - configuredInvite.uses === 1))
-            await djsGuildMember.addRole(configuredInvite.roleId)
+        const invites = await guild.djs.fetchInvites()
+
+        for (const configuredInvite of guild.configuredInvites)
+        {
+            const invite = invites.get(configuredInvite.inviteId)
+            if (invite && (invite.uses - configuredInvite.uses === 1))
+                await djsGuildMember.addRole(configuredInvite.roleId)
+        }
+        await updateInviteUsesForGuild(guild)
+        await guild.save()
     }
-    await updateInviteUsesForGuild(guild)
-    await guild.save()
+    catch (ex)
+    {
+        Logger.debugLogError(`Error updating invites for guild ${guild.id}`, ex)
+        Logger.logEvent("ErrorUpdatingInvites")
+    }
 }

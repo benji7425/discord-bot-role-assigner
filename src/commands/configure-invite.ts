@@ -1,4 +1,4 @@
-import { Command, CommandRejection, PermissionLevel } from "disharmony"
+import { Command, CommandRejection, Logger, PermissionLevel } from "disharmony"
 import Invite from "../models/invite"
 import { Message } from "../models/message"
 
@@ -21,6 +21,8 @@ async function invoke(params: string[], message: Message)
     }
     else
         throw new CommandRejection("Please either @mention a role, or use 'remove' as the last parameter to remove this configured invite")
+
+    Logger.logEvent("InviteConfigured")
 
     return "Success!"
 }

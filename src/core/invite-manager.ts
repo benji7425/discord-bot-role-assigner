@@ -23,11 +23,11 @@ async function updateInviteUsesForAllGuilds(client: IClient)
             await updateInviteUsesForGuild(guild)
             await guild.save()
         }
-        catch
+        catch (ex)
         {
             // TODO Add some proper error handling or something
-            // Probably guild.loadDocument failed if the guild hasn't configured anything
-            Logger.debugLog("Failed to update invite users for some guild")
+            Logger.debugLogError(`Failed to update invite users for guild ${djsGuild.id}`, ex)
+            Logger.logEvent("ErrorUpdatingInviteUses")
         }
     }
 }
