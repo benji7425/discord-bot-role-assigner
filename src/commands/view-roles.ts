@@ -3,12 +3,9 @@ import { Message } from "../models/message"
 
 async function invoke(_: string[], message: Message)
 {
-    const responseStr =
-        message.guild.joinableRoles.length === 0 ?
-            "No roles configured!" :
-            `\n• ${message.guild.joinableRoles.join("\n•")}`
-
-    return Promise.resolve(responseStr)
+    return message.guild.joinableRoles.length === 0 ?
+        "No roles configured!" :
+        `\n• ${message.guild.joinableRoles.join("\n•")}`
 }
 
 export default new Command(
