@@ -23,7 +23,7 @@ async function invoke(params: string[], message: Message)
 }
 
 export default new Command(
-    /*syntax*/          "set-joinable <rolename> [true/false]",
+    /*syntax*/          "set-joinable <rolename> <true/false>",
     /*description*/     "Set a role as joinable and leavable",
     /*permissionLevel*/ PermissionLevel.Admin,
     /*invoke*/          invoke,
