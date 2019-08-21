@@ -1,4 +1,6 @@
 import configureInvite from "./configure-invite"
+import deprecatedAllow from "./deprecated/allow"
+import deprecatedDisallow from "./deprecated/disallow"
 import join from "./join"
 import leave from "./leave"
 import setJoinable from "./set-joinable"
@@ -12,4 +14,6 @@ export default [
     viewRoles,
     configureInvite,
     viewInvites,
+    deprecatedAllow,
+    deprecatedDisallow,
 ]
