@@ -11,12 +11,12 @@ async function invoke(params: string[], message: Message)
     if (!message.guild.hasJoinableRole(roleName))
         throw new CommandRejection("You are not permitted to join/leave that role")
 
-    const roleSnowflake = message.guild.getRoleSnowflake(name)
+    const roleSnowflake = message.guild.getRoleSnowflake(roleName)
 
     if (!roleSnowflake)
         throw new CommandRejection("Unable to find that role in this guild")
 
-    await message.member.removeRole(roleSnowflake)
+    await message.member.addRole(roleSnowflake)
 
     return `You have joined the role ${roleName}`
 }

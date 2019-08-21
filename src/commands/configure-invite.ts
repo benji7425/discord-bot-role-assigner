@@ -4,17 +4,18 @@ import { Message } from "../models/message"
 
 async function invoke(params: string[], message: Message)
 {
+    const guildInvites = await message.guild.djs.fetchInvites()
     const inviteId = params[0]
-    const invites = await message.guild.djs.fetchInvites()
-    const invite = invites.get(inviteId)
+    const targetInvite = guildInvites.get(inviteId)
+    const isRemoving = params[1].toLowerCase() === "remove"
 
-    if (!invite)
+    if (!targetInvite)
         throw new CommandRejection(`Invite with id '${inviteId}' not found`)
 
     const role = message.mentions.roles.first()
     if (role)
-        message.guild.configuredInvites.push(new Invite(inviteId, role.id, invite.uses))
-    else if (params[1].toLowerCase() === "remove")
+        message.guild.configuredInvites.push(new Invite(inviteId, role.id, targetInvite.uses))
+    else if (isRemoving)
     {
         const idx = message.guild.configuredInvites.findIndex(x => x.inviteId === inviteId)
         message.guild.configuredInvites.splice(idx, 1)
@@ -24,7 +25,7 @@ async function invoke(params: string[], message: Message)
 
     Logger.logEvent("InviteConfigured")
 
-    return "Success!"
+    return isRemoving ? "Invite configuration removed" : "Invite configuration added"
 }
 
 export default new Command(
