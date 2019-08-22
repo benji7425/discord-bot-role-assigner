@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "@types/node": "^10.14.15",
-    "disharmony": "^1.1.0",
+    "disharmony": "^1.2.0",
     "typescript": "^3.1.1"
   },
   "description": "Discord bot to allow users to join and leave configured roles",
