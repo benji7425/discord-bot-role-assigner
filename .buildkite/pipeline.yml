@@ -30,8 +30,6 @@ steps:
           workdir: "/workdir"
           mount-checkout: false
           command: ["/bin/bash", "-c", "npm install --dev && npm run build-test"]
-  - label: ":docker: Image"
+  - label: ":docker: Build Image"
     command:
       - "docker build -t benji7425/discord-role-assigner:latest ."
-      - "docker push benji7425/discord-role-assigner:latest"
-    branches: "master"
