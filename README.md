@@ -46,23 +46,37 @@ Each permission has a reason for being required, explained below.
 | Manage server  | Read server invites for role assigning when user joins with invite  |
 
 ## Self hosting
-1. Install [Node.js v10](https://nodejs.org/en/) and 
+### Manually
+1. Install [Node.js v10](https://nodejs.org/en/)
 2. Clone the repository, or download and extract the zip file (preferrably from the [release page](https://github.com/benji7425/discord-role-assigner/releases))
-3. Add a file named *token* in the root folder; paste in your bot token
-3. Run `npm install` to install dependencies
-4. Run `npm run build` to generate output javascript
-6. Run `npm start` to start the bot
+3. Create a new file config.json from a copy of config.sample.json; paste your bot token in the token field (between the quotes)
+4. Run `npm run full-start` to compile and run the bot
+    - If you see yellow 'WARN' messages about peer dependencies, you can safely ignore these
 
-### Git users
+#### Git users
 If you cloned the repository with git, make sure you `git reset --hard vX.Y` to a specific version, as latest master isn't always production ready!
+
+### Docker
+`docker run [OPTIONS] benji7425/discord-role-assigner`
+
+#### Options
+- To gain access to the log files  
+    `-v /path/to/logs:/app/logs`
+- To provide a token (for the default configuration)  
+    `-e TOKEN="your-token-here"`
+- To maintain a persistent copy of the local database (for the default configuration)  
+    `-v /path/to/data:/app/nedb-data`
+- To provide your own configuration  
+    `-v /path/to/config.json:/app/config.json`
+
+#### Notes
+- **Due to limitations with volume mounting cross-OS you cannost use a Windows host with the inbuilt NeDB database**
+- View the image on Docker Hub [here](https://cloud.docker.com/u/benji7425/repository/docker/benji7425/discord-role-assigner)
 
 ### Database
 - Out of the box the project uses [NeDB](https://github.com/louischatriot/nedb/) as a local database, storing the data in *./nedb-data*
 - Both [NeDB](https://github.com/louischatriot/nedb/) and [MongoDB](https://www.mongodb.com) are supported
 - Edit the connection string in [config.json](./config.json) or by setting the *DB_STRING* environment variable
-
-### Docker
-*Coming soon*
 
 ## Need help?
 I am available for contact via my [support Discord server](https://discordapp.com/invite/SSkbwSJ). I will always do my best to respond, however I am often busy so can't always be available right away, and as this is a free service I may not always be able to resolve your query.
