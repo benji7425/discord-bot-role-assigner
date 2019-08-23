@@ -34,5 +34,5 @@
     "test": "node --stack-trace-limit=1 ./test-runner.js"
   },
   "types": "dist/index.d.ts",
-  "version": "4.0.0-a1"
+  "version": "4.0.0"
 }
