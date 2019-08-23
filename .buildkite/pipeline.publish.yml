@@ -1,0 +1,18 @@
+steps:
+  - label: ":buildkite: Run regular pipeline"
+    trigger: "role-assigner"
+    build:
+      branch: "${BUILDKITE_BRANCH}"
+      message: "Pre-publish"
+  - wait: ~
+  - label: ":docker: Push Image"
+    command: "docker push benji7425/discord-role-assigner:latest"
+  - label: ":github: Create Release"
+    plugins:
+      - docker#v3.3.0:
+          image: "benji7425/github-release-creator:latest"
+          volumes: ["./CHANGELOG.md:/app/CHANGELOG.md"]
+          mount-checkout: false
+          environment: ["GITHUB_TOKEN"]
+          command: ["--owner", "benji7425", "--repo", "discord-role-assigner", "--file", "CHANGELOG.md"]
+    soft_fail: true

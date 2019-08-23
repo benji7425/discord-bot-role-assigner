@@ -1,9 +1,0 @@
-steps:
-  - label: ":buildkite: Run regular pipeline"
-    trigger: "role-assigner"
-    build:
-      branch: "${BUILDKITE_BRANCH}"
-      message: "Pre-publish"
-  - wait: ~
-  - label: ":docker: Push Image"
-    command: "docker push benji7425/discord-role-assigner:latest"
