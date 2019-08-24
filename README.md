@@ -1,4 +1,5 @@
 [![Build status](https://badge.buildkite.com/8ce0723b03f875a2dd9ba526d3b6fbc8601d1be1f56a02e94e.svg)](https://buildkite.com/benji7425/rss-fetcher)
+![Health status](https://healthchecks.io/badge/757a86c5-43a4-4c74-a134-72ba9e7b391b/v3FMFqP1/role-assigner.svg)
 # Discord Role Assigner
 <!--summary-->
 A simple Discord bot to allow users to join and leave configured roles
@@ -18,7 +19,7 @@ A simple Discord bot to allow users to join and leave configured roles
 ## Getting started
 ### Invite
 - By using this bot you agree to the terms laid out in the [Privacy & Terms](./docs/privacy-and-terms) document
-- If you agree, use my [public invite]() (coming soon!) to invite the bot to your server
+- If you agree, use my [public invite](https://discordapp.com/oauth2/authorize?client_id=341303774838652928&scope=bot&permissions=268454944) to invite the bot to your server
 - See the [self hosting section](#self-hosting) for details on running on your own server
 
 ### Setup
@@ -71,7 +72,7 @@ If you cloned the repository with git, make sure you `git reset --hard vX.Y` to 
 
 #### Notes
 - **Due to limitations with volume mounting cross-OS you cannost use a Windows host with the inbuilt NeDB database**
-- View the image on Docker Hub [here](https://cloud.docker.com/u/benji7425/repository/docker/benji7425/discord-role-assigner)
+- View the image on Docker Hub [here](https://hub.docker.com/r/benji7425/discord-role-assigner)
 
 ### Database
 - Out of the box the project uses [NeDB](https://github.com/louischatriot/nedb/) as a local database, storing the data in *./nedb-data*
