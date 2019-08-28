@@ -1,24 +1,10 @@
-import { Command, CommandRejection, PermissionLevel } from "disharmony"
+import { Command, PermissionLevel } from "disharmony"
+import updateRole from "../core/role-updater"
 import { Message } from "../models/message"
 
 async function invoke(params: string[], message: Message)
 {
-    const roleName = params[0]
-
-    if (message.member.hasRole(roleName))
-        throw new CommandRejection("You do not currently have that role!")
-
-    if (!message.guild.hasJoinableRole(roleName))
-        throw new CommandRejection("You are not permitted to join/leave that role")
-
-    const roleSnowflake = message.guild.getRoleSnowflake(roleName)
-
-    if (!roleSnowflake)
-        throw new CommandRejection("Unable to find that role in this guild")
-
-    await message.member.removeRole(roleSnowflake)
-
-    return `You have left the role ${roleName}`
+    return updateRole(params[0], message, false)
 }
 
 export default new Command(

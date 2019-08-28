@@ -6,7 +6,7 @@ async function invoke(params: string[], message: Message)
 {
     const name = params[0], normalised = normaliseRole(params[0]), joinable = params[1].toLowerCase() !== "false"
 
-    if (!message.guild.hasRole(normalised))
+    if (!message.guild.getRoleWithNameNormalised(normalised))
         throw new CommandRejection(`Unable to find role ${name} in guild ${message.guild.name}`)
 
     if (joinable && message.guild.joinableRoles.find(x => x === normalised))
