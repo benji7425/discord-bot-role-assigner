@@ -10,25 +10,18 @@ export class Guild extends BotGuild
     public joinableRoles: string[]
     public configuredInvites: Invite[]
 
-    public hasRole(roleName: string)
+    public getRoleWithNameNormalised(roleName: string)
     {
+        const normalisedName = normaliseRole(roleName)
         for (const role of this.roles.values())
-            if (normaliseRole(role.name) === normaliseRole(roleName))
-                return true
-        return false
+            if (normaliseRole(role.name) === normalisedName)
+                return role
+        return null
     }
 
     public hasJoinableRole(roleName: string)
     {
         return this.joinableRoles.indexOf(normaliseRole(roleName)) > -1
-    }
-
-    public getRoleSnowflake(name: string)
-    {
-        for (const role of this.roles)
-            if (role[1].name === name)
-                return role[0]
-        return null
     }
 
     public loadRecord(record: any)
