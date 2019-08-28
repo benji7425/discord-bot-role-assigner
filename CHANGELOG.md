@@ -1,4 +1,9 @@
 # Changelog
+## v4.0.1
+### Fixed
+- Join and leave commands not using case-insensitive matching
+- Join and leave commands not warning the user if they already have/lack the target role
+
 ## v4.0.0
 Version 4.0 is a complete re-write of the bot using TypeScript and built on top of my [disharmony library](https://github.com/benji7425/disharmony).
 This changelog entry does not assume knowledge of v3.5 or prior, and so list additions as if this is a new project.
