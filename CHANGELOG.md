@@ -1,4 +1,13 @@
 # Changelog
+## v4.1.0
+### Added
+- Script `monitor.js` to restart the bot daily (usage optional)
+- Commands `import` and `export` for server data transfer
+- Config option to set bot 'playing' status
+
+### Fixed
+- Non-existent roles not being disallowable
+
 ## v4.0.1
 ### Fixed
 - Join and leave commands not using case-insensitive matching
