@@ -4,22 +4,22 @@ import { normaliseRole } from "../utilities"
 
 async function invoke(params: string[], message: Message)
 {
-    const name = params[0], normalised = normaliseRole(params[0]), joinable = params[1].toLowerCase() !== "false"
+    const name = params[0], normalised = normaliseRole(params[0]), isBecomingJoinable = params[1].toLowerCase() !== "false"
 
-    if (!message.guild.getRoleWithNameNormalised(normalised))
+    if (isBecomingJoinable && !message.guild.getRoleWithNameNormalised(normalised))
         throw new CommandRejection(`Unable to find role ${name} in guild ${message.guild.name}`)
 
-    if (joinable && message.guild.joinableRoles.find(x => x === normalised))
+    if (isBecomingJoinable && message.guild.joinableRoles.find(x => x === normalised))
         throw new CommandRejection(`Role ${name} already joinable`)
 
-    if (joinable)
+    if (isBecomingJoinable)
         message.guild.joinableRoles.push(normalised)
     else
         message.guild.joinableRoles = message.guild.joinableRoles.filter(x => x !== normalised)
 
     Logger.logEvent("RoleConfigured")
 
-    return `Role ${name} is now ${!joinable ? "no longer " : ""}joinable`
+    return `Role ${name} is now ${!isBecomingJoinable ? "no longer " : ""}joinable`
 }
 
 export default new Command(
