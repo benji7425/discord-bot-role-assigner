@@ -5,8 +5,8 @@ WORKDIR /app
 # Copy source code ready for compilation
 COPY src/ ./src/
 
-# Copy metadata files
-COPY package*.json tsconfig* ./
+# Copy meta files
+COPY package*.json tsconfig* monitor.js ./
 
 # Create config.json from config.sample.json
 COPY config.sample.json config.json
@@ -20,8 +20,8 @@ RUN npm run build
 # If not provided as an environment variable, the token is expected to be provided by a mounted config file
 ENV TOKEN ""
 
-# Install 'forever', package to auto-restart on failure
-RUN npm install -g forever
+# Install 'forever-monitor', package used in monitor.js to auto-restart on failure
+RUN npm install forever-monitor
 
 # Start the app using forever when the container runs
-CMD forever dist/index.js
+CMD node monitor.js
