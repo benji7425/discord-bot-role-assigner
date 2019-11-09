@@ -1,0 +1,25 @@
+{
+  "name": "Discord Role Assigner",
+  "description": "Discord bot to allow users to join and leave configured roles using commands",
+  "env": {
+    "TOKEN": {
+      "description": "Your bot token from the Discord Developer Portal",
+      "required": true
+    },
+    "DB_STRING":{
+      "description": "Your MongoDB connction string",
+      "required": true
+    }
+  },
+  "repository": "https://github.com/benji7425/discord-role-assigner",
+  "stack": "container",
+  "formation": {
+    "worker": {
+      "quantity": 1
+    }
+  },
+  "keywords": [
+    "discord"
+  ],
+  "website": "https://benji7425.io/discord-role-assigner"
+}
