@@ -1,9 +1,9 @@
 import { Collection, Role } from "discord.js"
-import { BotGuild } from "disharmony"
+import { DisharmonyGuild } from "disharmony"
 import { normaliseRole } from "../utilities"
 import Invite from "./invite"
 
-export class Guild extends BotGuild
+export class Guild extends DisharmonyGuild
 {
     get roles(): Collection<string, Role> { return this.djs.roles }
 

@@ -1,4 +1,4 @@
-import { IClient, Logger } from "disharmony"
+import { Client, Logger } from "disharmony"
 import { Guild } from "../models/guild"
 
 async function updateInviteUsesForGuild(guild: Guild)
@@ -12,7 +12,7 @@ async function updateInviteUsesForGuild(guild: Guild)
     }
 }
 
-async function updateInviteUsesForAllGuilds(client: IClient)
+async function updateInviteUsesForAllGuilds(client: Client)
 {
     for (const djsGuild of client.djs.guilds.values())
     {

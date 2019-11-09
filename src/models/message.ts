@@ -1,8 +1,8 @@
 import { Message as DjsMessage } from "discord.js"
-import { BotMessage } from "disharmony"
+import { DisharmonyMessage } from "disharmony"
 import { Guild } from "./guild"
 
-export class Message extends BotMessage
+export class Message extends DisharmonyMessage
 {
     public readonly guild: Guild
 
