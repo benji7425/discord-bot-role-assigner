@@ -45,6 +45,15 @@ Each permission has a reason for being required, explained below.
 | Embed links    | Responses to 'help' requests use message embeds for nice formatting |
 | Manage server  | Read server invites for role assigning when user joins with invite  |
 
+## Troubleshooting
+
+- Test Role Assigner's ability to reply by using the version command `@Role Assigner version`
+- Double check that Role Assigner has both *read* and *write* permissions in the channel you're using
+- Make sure you're actually mentioning the bot and *not the role with the same name*
+- Make sure you have the 'Administrator' permission if you're trying to use an admin command
+- Double check that you've given Role Assigner all the necessary [permissions](#permissions)
+- Make sure that the 'Role Assigner' role is higher in the server role hierarchy than the roles you want it to manage
+
 ## Built With
 - [Node.js](https://nodejs.org/en/) - *Runtime*
 - [discord.js](https://github.com/discordjs/discord.js) - *Discord library*
