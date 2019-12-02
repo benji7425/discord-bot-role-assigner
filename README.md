@@ -12,6 +12,10 @@ A simple Discord bot to allow users to join and leave configured roles.
 - Opt-in channels accessible by a joinable role
 - Opt-in role ping notifications accessible by a joinable role
 
+## Community instance
+A community member, [Oliver4888](https://github.com/oliver4888), is kindly offering public hosts of my Discord bots for other community members. If you are interested in using this community-provided instance, you can find more at https://bots.ol48.uk/.  
+Please note that I cannot personally verify or take responsibility for the integrity of a community-provided bot instance.
+
 ## Getting started
 Role Assigner needs to be deployed before you can invite it to your Discord server. Please see [my written deployment guide](https://benji7425.io/discord-deployment) or [video tutorial](https://www.youtube.com/watch?v=DjQayKgcjGM) which can guide you through deployment even if you are a beginner.  
 Once you have deployed Role Assigner then return here to follow the Discord setup instructions below.  
