@@ -1,4 +1,4 @@
-[![Build status](https://badge.buildkite.com/8ce0723b03f875a2dd9ba526d3b6fbc8601d1be1f56a02e94e.svg)](https://buildkite.com/benji7425/rss-fetcher)
+[![Build status](https://badge.buildkite.com/7de9dbfcbd18d6c26dc25df321b021907745da4932bab569ae.svg?branch=master)](https://buildkite.com/benji7425/role-assigner)
 
 # Discord Role Assigner
 A simple Discord bot to allow users to join and leave configured roles.
