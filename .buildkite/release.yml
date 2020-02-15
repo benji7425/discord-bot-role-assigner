@@ -8,11 +8,9 @@ steps:
   - label: ":docker: Push Image"
     command: "docker push benji7425/discord-role-assigner:latest"
   - label: ":github: Create Release"
+    command: ".buildkite/release-creator/create-github-release.sh $BUILDKITE_BRANCH benji7425 discord-role-assigner"
     plugins:
       - docker#v3.3.0:
-          image: "benji7425/github-release-creator:latest"
-          volumes: ["./CHANGELOG.md:/app/CHANGELOG.md"]
-          mount-checkout: false
+          image: benji7425/alpine-bash-curl
           environment: ["GITHUB_TOKEN"]
-          command: ["--owner", "benji7425", "--repo", "discord-role-assigner", "--file", "CHANGELOG.md"]
     soft_fail: true
