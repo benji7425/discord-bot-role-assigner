@@ -1,4 +1,4 @@
-[![Build status](https://badge.buildkite.com/7de9dbfcbd18d6c26dc25df321b021907745da4932bab569ae.svg?branch=master)](https://buildkite.com/benji7425/role-assigner)
+![Build status](https://github.com/benjihiggins/discord-role-assigner/workflows/Build%20%2B%20test/badge.svg?branch=master)
 
 # Discord Role Assigner
 A simple Discord bot to allow users to join and leave configured roles.
@@ -17,12 +17,12 @@ A community member, [Oliver4888](https://github.com/oliver4888), is kindly offer
 Please note that I cannot personally verify or take responsibility for the integrity of a community-provided bot instance.
 
 ## Getting started
-Role Assigner needs to be deployed before you can invite it to your Discord server. Please see [my written deployment guide](https://benji7425.io/discord-deployment) or [video tutorial](https://www.youtube.com/watch?v=DjQayKgcjGM) which can guide you through deployment even if you are a beginner.  
+Role Assigner needs to be deployed before you can invite it to your Discord server. Please see [my written deployment guide](https://benjihiggins.github.io/discord-deployment) or [video tutorial](https://www.youtube.com/watch?v=DjQayKgcjGM) which can guide you through deployment even if you are a beginner.  
 Once you have deployed Role Assigner then return here to follow the Discord setup instructions below.  
 
 This button can be used for following the Heroku deployment steps.
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/benji7425/discord-role-assigner)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/benjihiggins/discord-role-assigner)
 
 ## Discord Setup
 Follow these instructions once you have deployed the Role Assigner and added it to your Discord server.
@@ -61,7 +61,7 @@ Each permission has a reason for being required, explained below.
 ## Built With
 - [Node.js](https://nodejs.org/en/) - *Runtime*
 - [discord.js](https://github.com/discordjs/discord.js) - *Discord library*
-- [disharmony](https://github.com/benji7425/disharmony) - *Bot framework*
+- [disharmony](https://github.com/benjihiggins/disharmony) - *Bot framework*
 
 ## Versioning
 [SemVer](http://semver.org/) is used for versioning; view available versions on the [tags page](https://github.com/your/project/tags).
