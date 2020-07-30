@@ -1,1 +1,1 @@
-FROM benji7425/discord-role-assigner:latest
+FROM benjihiggins/discord-role-assigner:latest
