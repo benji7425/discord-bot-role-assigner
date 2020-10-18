@@ -1,5 +1,7 @@
 ![Build status](https://github.com/benjihiggins/discord-role-assigner/workflows/Build%20%2B%20test/badge.svg?branch=master)
 
+**I am no longer actively maintaining this project. It should continue to work, but I can't guarantee that I'll fix it if future Discord updates cause issues.**
+
 # Discord Role Assigner
 A simple Discord bot to allow users to join and leave configured roles.
 
@@ -22,7 +24,7 @@ Once you have deployed Role Assigner then return here to follow the Discord setu
 
 This button can be used for following the Heroku deployment steps.
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/benjihiggins/discord-role-assigner)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/bhigginsuk/discord-role-assigner)
 
 ## Discord Setup
 Follow these instructions once you have deployed the Role Assigner and added it to your Discord server.
@@ -61,7 +63,7 @@ Each permission has a reason for being required, explained below.
 ## Built With
 - [Node.js](https://nodejs.org/en/) - *Runtime*
 - [discord.js](https://github.com/discordjs/discord.js) - *Discord library*
-- [disharmony](https://github.com/benjihiggins/disharmony) - *Bot framework*
+- [disharmony](https://github.com/bhigginsuk/disharmony) - *Bot framework*
 
 ## Versioning
 [SemVer](http://semver.org/) is used for versioning; view available versions on the [tags page](https://github.com/your/project/tags).
