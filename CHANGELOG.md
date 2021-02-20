@@ -1,4 +1,11 @@
 # Changelog
+## v4.1.2
+### Updated
+- Package version for disharmony
+
+### Removed
+- Dead links in help command
+
 ## v4.1.1
 ### Updated
 - Package versions for typescript and disharmony

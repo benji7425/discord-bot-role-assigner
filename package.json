@@ -1,11 +1,11 @@
 {
-  "author": "Benji7425 <benji7425@pm.me> (http://benji7425.github.io/)",
+  "author": "Benjamin Higgins <mail@brhiggins.com>",
   "bugs": {
-    "url": "https://github.com/benji7425/discord-role-assigner/issues"
+    "url": "https://github.com/bhigginsuk/discord-role-assigner/issues"
   },
   "dependencies": {
     "@types/node": "^10.14.15",
-    "disharmony": "git+https://github.com/benjihiggins/disharmony.git#v2.0.6",
+    "disharmony": "git+https://github.com/bhigginsuk/disharmony.git#v2.0.8",
     "typescript": "^3.9.7"
   },
   "description": "Discord bot to allow users to join and leave configured roles",
@@ -17,13 +17,13 @@
     "!*.map",
     "!*.spec.*"
   ],
-  "homepage": "https://github.com/benji7425/discord-role-assigner#readme",
+  "homepage": "https://github.com/bhigginsuk/discord-role-assigner#readme",
   "license": "MIT",
   "main": "dist/index.js",
   "name": "discord-role-assigner",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benji7425/discord-role-assigner.git"
+    "url": "git+https://github.com/bhigginsuk/discord-role-assigner.git"
   },
   "scripts": {
     "build": "./node_modules/.bin/tsc --project tsconfig.prod.json",
@@ -34,5 +34,5 @@
     "test": "node --stack-trace-limit=1 ./test-runner.js"
   },
   "types": "dist/index.d.ts",
-  "version": "4.1.1"
+  "version": "4.1.2"
 }
