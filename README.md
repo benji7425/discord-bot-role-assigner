@@ -1,4 +1,4 @@
-![Build status](https://github.com/benjihiggins/discord-role-assigner/workflows/Build%20%2B%20test/badge.svg?branch=master)
+![Build status](https://github.com/bhigginsuk/discord-role-assigner/actions/workflows/validate.yml/badge.svg?branch=master)
 
 **I am no longer actively maintaining this project. It should continue to work, but I can't guarantee that I'll fix it if future Discord updates cause issues.**
 
@@ -19,7 +19,7 @@ A community member, [Oliver4888](https://github.com/oliver4888), is kindly offer
 Please note that I cannot personally verify or take responsibility for the integrity of a community-provided bot instance.
 
 ## Getting started
-Role Assigner needs to be deployed before you can invite it to your Discord server. Please see [my written deployment guide](https://gist.github.com/bhigginsuk/639b321d8ba5795e32c8cf6e46956411) or [video tutorial](https://www.youtube.com/watch?v=DjQayKgcjGM) which can guide you through deployment even if you are a beginner.  
+Role Assigner needs to be deployed before you can invite it to your Discord server. Please see [my written deployment guide](./deployment.md) or [video tutorial](https://www.youtube.com/watch?v=DjQayKgcjGM) which can guide you through deployment even if you are a beginner.  
 Once you have deployed Role Assigner then return here to follow the Discord setup instructions below.  
 
 This button can be used for following the Heroku deployment steps.
@@ -66,7 +66,7 @@ Each permission has a reason for being required, explained below.
 - [disharmony](https://github.com/bhigginsuk/disharmony) - *Bot framework*
 
 ## Versioning
-[SemVer](http://semver.org/) is used for versioning; view available versions on the [tags page](https://github.com/your/project/tags).
+[SemVer](http://semver.org/) is used for versioning; view available versions on the [tags page](https://github.com/discord-role-assigner/tags).
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
