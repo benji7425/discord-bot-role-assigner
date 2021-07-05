@@ -1,6 +1,7 @@
 ![Build status](https://github.com/bhigginsuk/discord-role-assigner/actions/workflows/validate.yml/badge.svg?branch=master)
 
-**I am no longer actively maintaining this project. It should continue to work, but I can't guarantee that I'll fix it if future Discord updates cause issues.**
+**I am no longer maintaining this project. It should continue to work just fine, but if it breaks I won't be interested in fixing it.**  
+You are welcome to fork and update the code yourself. I'm happy to answer any questions you may have in this regard.
 
 # Discord Role Assigner
 A simple Discord bot to allow users to join and leave configured roles.
